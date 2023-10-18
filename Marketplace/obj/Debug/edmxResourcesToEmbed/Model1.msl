@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище MarketplaceModelContainer" CdmEntityContainer="MarketplaceEntities">
+    <EntitySetMapping Name="Authorization">
+      <EntityTypeMapping TypeName="MarketplaceModel.Authorization">
+        <MappingFragment StoreEntitySet="Authorization">
+          <ScalarProperty Name="idAuthorization" ColumnName="idAuthorization" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Basket">
+      <EntityTypeMapping TypeName="MarketplaceModel.Basket">
+        <MappingFragment StoreEntitySet="Basket">
+          <ScalarProperty Name="idBasket" ColumnName="idBasket" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BasketProduct">
+      <EntityTypeMapping TypeName="MarketplaceModel.BasketProduct">
+        <MappingFragment StoreEntitySet="BasketProduct">
+          <ScalarProperty Name="idBasketProduct" ColumnName="idBasketProduct" />
+          <ScalarProperty Name="idBasket" ColumnName="idBasket" />
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Like">
+      <EntityTypeMapping TypeName="MarketplaceModel.Like">
+        <MappingFragment StoreEntitySet="Like">
+          <ScalarProperty Name="idLike" ColumnName="idLike" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="MarketplaceModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="idProductCategory" ColumnName="idProductCategory" />
+          <ScalarProperty Name="idProductBirthRate" ColumnName="idProductBirthRate" />
+          <ScalarProperty Name="onSell" ColumnName="onSell" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product_Storage">
+      <EntityTypeMapping TypeName="MarketplaceModel.Product_Storage">
+        <MappingFragment StoreEntitySet="Product_Storage">
+          <ScalarProperty Name="idProduct_Storage" ColumnName="idProduct_Storage" />
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="idStorage" ColumnName="idStorage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductAddRequest">
+      <EntityTypeMapping TypeName="MarketplaceModel.ProductAddRequest">
+        <MappingFragment StoreEntitySet="ProductAddRequest">
+          <ScalarProperty Name="idProductAddRequest" ColumnName="idProductAddRequest" />
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="idProductAddRequestStatus" ColumnName="idProductAddRequestStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductAddRequestStatus">
+      <EntityTypeMapping TypeName="MarketplaceModel.ProductAddRequestStatus">
+        <MappingFragment StoreEntitySet="ProductAddRequestStatus">
+          <ScalarProperty Name="idProductAddRequestStatus" ColumnName="idProductAddRequestStatus" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductBirthRate">
+      <EntityTypeMapping TypeName="MarketplaceModel.ProductBirthRate">
+        <MappingFragment StoreEntitySet="ProductBirthRate">
+          <ScalarProperty Name="idProductBirthRate" ColumnName="idProductBirthRate" />
+          <ScalarProperty Name="BirthRate" ColumnName="BirthRate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductCategory">
+      <EntityTypeMapping TypeName="MarketplaceModel.ProductCategory">
+        <MappingFragment StoreEntitySet="ProductCategory">
+          <ScalarProperty Name="idProductCategory" ColumnName="idProductCategory" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="MarketplaceModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="idRole" ColumnName="idRole" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Storage">
+      <EntityTypeMapping TypeName="MarketplaceModel.Storage">
+        <MappingFragment StoreEntitySet="Storage">
+          <ScalarProperty Name="idStorage" ColumnName="idStorage" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Supply">
+      <EntityTypeMapping TypeName="MarketplaceModel.Supply">
+        <MappingFragment StoreEntitySet="Supply">
+          <ScalarProperty Name="idSupply" ColumnName="idSupply" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="idStorage" ColumnName="idStorage" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Supply_Product">
+      <EntityTypeMapping TypeName="MarketplaceModel.Supply_Product">
+        <MappingFragment StoreEntitySet="Supply_Product">
+          <ScalarProperty Name="idSupply_Product" ColumnName="idSupply_Product" />
+          <ScalarProperty Name="idSupply" ColumnName="idSupply" />
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="MarketplaceModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="idAuthorization" ColumnName="idAuthorization" />
+          <ScalarProperty Name="idRole" ColumnName="idRole" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

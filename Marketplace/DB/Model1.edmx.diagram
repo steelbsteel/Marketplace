@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7a5b13de421e4c6eab1c0bde657fe5a5" Name="Diagram1">
+        <EntityTypeShape EntityType="MarketplaceModel1.Authorization" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketplaceModel1.Basket" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketplaceModel1.BasketProduct" Width="1.5" PointX="7.5" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketplaceModel1.Like" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketplaceModel1.Product" Width="1.5" PointX="5.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketplaceModel1.Product_Storage" Width="1.5" PointX="7.5" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketplaceModel1.ProductAddRequest" Width="1.5" PointX="10.5" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketplaceModel1.ProductAddRequestStatus" Width="1.5" PointX="8.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketplaceModel1.ProductBirthRate" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketplaceModel1.ProductCategory" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketplaceModel1.Role" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketplaceModel1.Storage" Width="1.5" PointX="6" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketplaceModel1.Supply" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketplaceModel1.Supply_Product" Width="1.5" PointX="10.5" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketplaceModel1.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketplaceModel1.User" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <AssociationConnector Association="MarketplaceModel1.FK_User_Authorization" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketplaceModel1.FK_Basket_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketplaceModel1.FK_BasketProduct_Basket" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketplaceModel1.FK_BasketProduct_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketplaceModel1.FK_Like_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketplaceModel1.FK_Like_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketplaceModel1.FK_Product_ProductBirthRate" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketplaceModel1.FK_Product_ProductCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketplaceModel1.FK_Product_Storage_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketplaceModel1.FK_Product_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketplaceModel1.FK_ProductAddRequest_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketplaceModel1.FK_Supply_Product_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketplaceModel1.FK_Product_Storage_Storage" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketplaceModel1.FK_ProductAddRequest_ProductAddRequestStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketplaceModel1.FK_ProductAddRequest_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketplaceModel1.FK_User_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketplaceModel1.FK_Supply_Storage" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketplaceModel1.FK_Supply_Product_Supply" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketplaceModel1.FK_Supply_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

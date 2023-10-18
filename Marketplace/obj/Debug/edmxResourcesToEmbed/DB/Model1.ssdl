@@ -1,0 +1,493 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище MarketplaceModel1" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Authorization">
+    <Key>
+      <PropertyRef Name="idAuthorization" />
+    </Key>
+    <Property Name="idAuthorization" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Basket">
+    <Key>
+      <PropertyRef Name="idBasket" />
+    </Key>
+    <Property Name="idBasket" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idUser" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BasketProduct">
+    <Key>
+      <PropertyRef Name="idBasketProduct" />
+    </Key>
+    <Property Name="idBasketProduct" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idBasket" Type="int" Nullable="false" />
+    <Property Name="idProduct" Type="int" Nullable="false" />
+    <Property Name="Count" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Like">
+    <Key>
+      <PropertyRef Name="idLike" />
+    </Key>
+    <Property Name="idLike" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idUser" Type="int" Nullable="false" />
+    <Property Name="idProduct" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="idProduct" />
+    </Key>
+    <Property Name="idProduct" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="idUser" Type="int" Nullable="false" />
+    <Property Name="idProductCategory" Type="int" Nullable="false" />
+    <Property Name="idProductBirthRate" Type="int" Nullable="false" />
+    <Property Name="onSell" Type="bit" Nullable="false" />
+    <Property Name="Cost" Type="int" Nullable="false" />
+    <Property Name="Image" Type="image" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product_Storage">
+    <Key>
+      <PropertyRef Name="idProduct_Storage" />
+    </Key>
+    <Property Name="idProduct_Storage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idProduct" Type="int" Nullable="false" />
+    <Property Name="idStorage" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductAddRequest">
+    <Key>
+      <PropertyRef Name="idProductAddRequest" />
+    </Key>
+    <Property Name="idProductAddRequest" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idProduct" Type="int" Nullable="false" />
+    <Property Name="idUser" Type="int" />
+    <Property Name="idProductAddRequestStatus" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductAddRequestStatus">
+    <Key>
+      <PropertyRef Name="idProductAddRequestStatus" />
+    </Key>
+    <Property Name="idProductAddRequestStatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductBirthRate">
+    <Key>
+      <PropertyRef Name="idProductBirthRate" />
+    </Key>
+    <Property Name="idProductBirthRate" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BirthRate" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductCategory">
+    <Key>
+      <PropertyRef Name="idProductCategory" />
+    </Key>
+    <Property Name="idProductCategory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="idRole" />
+    </Key>
+    <Property Name="idRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Storage">
+    <Key>
+      <PropertyRef Name="idStorage" />
+    </Key>
+    <Property Name="idStorage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Supply">
+    <Key>
+      <PropertyRef Name="idSupply" />
+    </Key>
+    <Property Name="idSupply" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="idStorage" Type="int" Nullable="false" />
+    <Property Name="idUser" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Supply_Product">
+    <Key>
+      <PropertyRef Name="idSupply_Product" />
+    </Key>
+    <Property Name="idSupply_Product" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idSupply" Type="int" Nullable="false" />
+    <Property Name="idProduct" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="idAuthorization" Type="int" Nullable="false" />
+    <Property Name="idRole" Type="int" Nullable="false" />
+    <Property Name="BirthDate" Type="date" Nullable="false" />
+    <Property Name="Balance" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Basket_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Basket" Type="Self.Basket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="Basket">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BasketProduct_Basket">
+    <End Role="Basket" Type="Self.Basket" Multiplicity="1" />
+    <End Role="BasketProduct" Type="Self.BasketProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Basket">
+        <PropertyRef Name="idBasket" />
+      </Principal>
+      <Dependent Role="BasketProduct">
+        <PropertyRef Name="idBasket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BasketProduct_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="BasketProduct" Type="Self.BasketProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="idProduct" />
+      </Principal>
+      <Dependent Role="BasketProduct">
+        <PropertyRef Name="idProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Like_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Like" Type="Self.Like" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="idProduct" />
+      </Principal>
+      <Dependent Role="Like">
+        <PropertyRef Name="idProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Like_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Like" Type="Self.Like" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="Like">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ProductBirthRate">
+    <End Role="ProductBirthRate" Type="Self.ProductBirthRate" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductBirthRate">
+        <PropertyRef Name="idProductBirthRate" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="idProductBirthRate" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ProductCategory">
+    <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductCategory">
+        <PropertyRef Name="idProductCategory" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="idProductCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Storage_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Product_Storage" Type="Self.Product_Storage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="idProduct" />
+      </Principal>
+      <Dependent Role="Product_Storage">
+        <PropertyRef Name="idProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Storage_Storage">
+    <End Role="Storage" Type="Self.Storage" Multiplicity="1" />
+    <End Role="Product_Storage" Type="Self.Product_Storage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Storage">
+        <PropertyRef Name="idStorage" />
+      </Principal>
+      <Dependent Role="Product_Storage">
+        <PropertyRef Name="idStorage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductAddRequest_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProductAddRequest" Type="Self.ProductAddRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="idProduct" />
+      </Principal>
+      <Dependent Role="ProductAddRequest">
+        <PropertyRef Name="idProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductAddRequest_ProductAddRequestStatus">
+    <End Role="ProductAddRequestStatus" Type="Self.ProductAddRequestStatus" Multiplicity="1" />
+    <End Role="ProductAddRequest" Type="Self.ProductAddRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductAddRequestStatus">
+        <PropertyRef Name="idProductAddRequestStatus" />
+      </Principal>
+      <Dependent Role="ProductAddRequest">
+        <PropertyRef Name="idProductAddRequestStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductAddRequest_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="ProductAddRequest" Type="Self.ProductAddRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="ProductAddRequest">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supply_Product_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Supply_Product" Type="Self.Supply_Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="idProduct" />
+      </Principal>
+      <Dependent Role="Supply_Product">
+        <PropertyRef Name="idProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supply_Product_Supply">
+    <End Role="Supply" Type="Self.Supply" Multiplicity="1" />
+    <End Role="Supply_Product" Type="Self.Supply_Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supply">
+        <PropertyRef Name="idSupply" />
+      </Principal>
+      <Dependent Role="Supply_Product">
+        <PropertyRef Name="idSupply" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supply_Storage">
+    <End Role="Storage" Type="Self.Storage" Multiplicity="1" />
+    <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Storage">
+        <PropertyRef Name="idStorage" />
+      </Principal>
+      <Dependent Role="Supply">
+        <PropertyRef Name="idStorage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supply_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="Supply">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Authorization">
+    <End Role="Authorization" Type="Self.Authorization" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authorization">
+        <PropertyRef Name="idAuthorization" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="idAuthorization" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="idRole" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="idRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="Хранилище MarketplaceModel1Container">
+    <EntitySet Name="Authorization" EntityType="Self.Authorization" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Basket" EntityType="Self.Basket" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BasketProduct" EntityType="Self.BasketProduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Like" EntityType="Self.Like" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product_Storage" EntityType="Self.Product_Storage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductAddRequest" EntityType="Self.ProductAddRequest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductAddRequestStatus" EntityType="Self.ProductAddRequestStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductBirthRate" EntityType="Self.ProductBirthRate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Storage" EntityType="Self.Storage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Supply" EntityType="Self.Supply" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Supply_Product" EntityType="Self.Supply_Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Basket_User" Association="Self.FK_Basket_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Basket" EntitySet="Basket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BasketProduct_Basket" Association="Self.FK_BasketProduct_Basket">
+      <End Role="Basket" EntitySet="Basket" />
+      <End Role="BasketProduct" EntitySet="BasketProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BasketProduct_Product" Association="Self.FK_BasketProduct_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="BasketProduct" EntitySet="BasketProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Like_Product" Association="Self.FK_Like_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Like" EntitySet="Like" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Like_User" Association="Self.FK_Like_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Like" EntitySet="Like" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ProductBirthRate" Association="Self.FK_Product_ProductBirthRate">
+      <End Role="ProductBirthRate" EntitySet="ProductBirthRate" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ProductCategory" Association="Self.FK_Product_ProductCategory">
+      <End Role="ProductCategory" EntitySet="ProductCategory" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Storage_Product" Association="Self.FK_Product_Storage_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Product_Storage" EntitySet="Product_Storage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Storage_Storage" Association="Self.FK_Product_Storage_Storage">
+      <End Role="Storage" EntitySet="Storage" />
+      <End Role="Product_Storage" EntitySet="Product_Storage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_User" Association="Self.FK_Product_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductAddRequest_Product" Association="Self.FK_ProductAddRequest_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductAddRequest" EntitySet="ProductAddRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductAddRequest_ProductAddRequestStatus" Association="Self.FK_ProductAddRequest_ProductAddRequestStatus">
+      <End Role="ProductAddRequestStatus" EntitySet="ProductAddRequestStatus" />
+      <End Role="ProductAddRequest" EntitySet="ProductAddRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductAddRequest_User" Association="Self.FK_ProductAddRequest_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="ProductAddRequest" EntitySet="ProductAddRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supply_Product_Product" Association="Self.FK_Supply_Product_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Supply_Product" EntitySet="Supply_Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supply_Product_Supply" Association="Self.FK_Supply_Product_Supply">
+      <End Role="Supply" EntitySet="Supply" />
+      <End Role="Supply_Product" EntitySet="Supply_Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supply_Storage" Association="Self.FK_Supply_Storage">
+      <End Role="Storage" EntitySet="Storage" />
+      <End Role="Supply" EntitySet="Supply" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supply_User" Association="Self.FK_Supply_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Supply" EntitySet="Supply" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Authorization" Association="Self.FK_User_Authorization">
+      <End Role="Authorization" EntitySet="Authorization" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

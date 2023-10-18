@@ -1,0 +1,33 @@
+﻿<Page x:Class="Marketplace.Pages.AuthorizationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Marketplace.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Title="AuthorizationPage" ShowsNavigationUI="False">
+    <Grid Background="#FEF9EF">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="27*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Image Grid.Column="1" Source="/Pages/logoBlack.png" Width="500" Height="150"/>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <Label HorizontalAlignment="Center" FontSize="40">Логин</Label>
+            <TextBox x:Name="LoginTB" Margin="10"></TextBox>
+            <Label HorizontalAlignment="Center" FontSize="40">Пароль</Label>
+            <PasswordBox x:Name="PasswordTB" Margin="10"></PasswordBox>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="SignInBtn" Content="Войти" Width="295" Click="SignInBtn_Click"></Button>
+            <Button x:Name="RegistrationBtn" Content="Регистрация" Width="359" Margin="70 0 0 0" Click="RegistrationBtn_Click"></Button>
+        </StackPanel>
+    </Grid> 
+</Page>
