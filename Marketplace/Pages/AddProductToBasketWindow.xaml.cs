@@ -24,7 +24,10 @@ namespace Marketplace.Pages
         Product productInfo;
         public AddProductToBasketWindow(User user, Product product)
         {
+            userInfo = user;
+            productInfo = product;
             InitializeComponent();
+            CountOfProductInStorage.Content = DBMethods.GetCountOfProductInStorage(product).ToString();
         }
 
         private void CountTBTextChanged(object sender, TextChangedEventArgs e)
@@ -48,6 +51,18 @@ namespace Marketplace.Pages
 
         private void AddProductToBasketBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(CountTB.Text))
+            {
+                MessageBox.Show("Поле количества не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if (Convert.ToInt32(CountTB.Text) > DBMethods.GetCountOfProductInStorage(productInfo))
+            {
+                MessageBox.Show("Вы выбрали количество товара больше, чем хранится на складе", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             try
             {
                 BasketProduct bProduct = new BasketProduct();
@@ -56,11 +71,18 @@ namespace Marketplace.Pages
                 bProduct.Count = Convert.ToInt32(CountTB.Text);
                 App.Connection.BasketProduct.Add(bProduct);
                 App.Connection.SaveChanges();
+                MessageBox.Show("Продукт успешно добавлен в корзину", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
             }
             catch
             {
                 MessageBox.Show("Ошибка", "Внимание", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void PageLoaded(object sender, RoutedEventArgs e)
+        {
+            this.DataContext = productInfo;
         }
     }
 }

@@ -19,8 +19,7 @@
         </StackPanel>
         <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
             <Button x:Name="ExitBtn" Content="Выйти" FontWeight="Light" Width="100" FontSize="25" Background="#FEF9EF" Margin="10" Foreground="#353831" Click="ExitBtn_Click"></Button>
-            <Button Content="Корзина" FontWeight="Light" Width="140" FontSize="25" Margin="10"  Background="#FEF9EF" Foreground="#353831"></Button>
-            <Button Content="Маркетплейс" FontWeight="Light" Width="180" FontSize="25" Margin="10"  Background="#FEF9EF" Foreground="#353831"></Button>
+            <Button x:Name="GoToBasketBtn" Content="Корзина" FontWeight="Light" Width="140" FontSize="25" Margin="10"  Background="#FEF9EF" Foreground="#353831" Click="GoToBasketBtn_Click"></Button>
             <Image Source="/Pages/logoWhite.png" Width="300" Margin="70 0 0 0"></Image>
             <Label MouseDown="NameMouseDown" FontStyle="Italic" Foreground="#FEF9EF" VerticalAlignment="Center" Margin="80 0 0 0" Content="Имя" x:Name="NameLabel"></Label>
             <Label MouseDown="NameMouseDown" FontStyle="Italic" Foreground="#FEF9EF" VerticalAlignment="Center" Margin="30 0 0 0" Content="Фамилия" x:Name="SurnameLabel"></Label>
@@ -51,8 +50,8 @@
                                 <Label Foreground="#FEF9EF" Content="{Binding Title}" HorizontalAlignment="Center"/>
                                 <Label Foreground="#FEF9EF" Content="{Binding Cost}" HorizontalAlignment="Center"/>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button Content="♥" x:Name="LikeBtn" VerticalAlignment="Center" FontSize="60" HorizontalAlignment="Left" Click="LikeBtn_Click"></Button>
-                                    <Button Content="🛒" Click="BuyBtnClick" x:Name="BuyBtn" VerticalAlignment="Center" FontSize="40" HorizontalAlignment="Right" Margin="300 10 0 0"></Button>
+                                    <Button Tag="{Binding idProduct}" Content="♥" x:Name="LikeBtn" VerticalAlignment="Center" FontSize="60" HorizontalAlignment="Left" Click="LikeBtn_Click"></Button>
+                                    <Button Tag="{Binding idProduct}" Content="🛒" Click="BuyBtnClick" x:Name="BuyBtn" VerticalAlignment="Center" FontSize="40" HorizontalAlignment="Right" Margin="300 10 0 0"></Button>
                                 </StackPanel>
                             </StackPanel>
                             <Separator Height="5" Opacity="0"/>

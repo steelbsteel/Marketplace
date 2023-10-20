@@ -19,12 +19,13 @@
             </StackPanel.Effect>
         </StackPanel>
         <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-            <Button x:Name="BackBtn" Content="Назад" FontWeight="Light" Width="100" FontSize="25" Background="#FEF9EF" Margin="10" Foreground="#353831" Click="BackBtnClick"></Button>
+            <Button x:Name="BackBtnClick" Content="Назад" FontWeight="Light" Width="100" FontSize="25" Background="#FEF9EF" Margin="10" Foreground="#353831" Click="BackBtnClick"></Button>
             <Button Content="Корзина" FontWeight="Light" Width="140" FontSize="25" Margin="10"  Background="#FEF9EF" Foreground="#353831"></Button>
             <Button Content="Маркетплейс" FontWeight="Light" Width="180" FontSize="25" Margin="10"  Background="#FEF9EF" Foreground="#353831"></Button>
             <Image Source="/Pages/logoWhite.png" Width="300" Margin="70 0 0 0"></Image>
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Vertical" Margin="30">
+            <Label Content="Профиль" HorizontalAlignment="Center" FontWeight="Black" Margin="0 0 0 15"></Label>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Имя: "/>
                 <Label Content="{Binding Name}"/>
@@ -38,8 +39,8 @@
                 <Label x:Name="BalanceLabel" Content="{Binding Balance}"/>
             </StackPanel>
             <Button Content="Пополнить баланс" Margin="15" Width="600" Click="ReplinishBalanceBtnClick"/>
-            <Button Content="Просмотреть понравившиеся" Margin="15" Width="600"/>
-            <Button Content="Просмотреть корзину" Margin="15" Width="600"/>
+            <Button Content="Просмотреть понравившиеся" Margin="15" Width="600" Click="GoToLikesBtnClick"/>
+            <Button Content="Просмотреть корзину" Margin="15" Width="600" Click="GoToBasketBtnClick"/>
         </StackPanel>
     </Grid>
 </Page>

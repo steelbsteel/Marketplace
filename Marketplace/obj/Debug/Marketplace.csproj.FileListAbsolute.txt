@@ -32,3 +32,9 @@ C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\ProfilePage.g
 C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\ProfilePage.baml
 C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\ReplinishBalanceWindow.g.cs
 C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\ReplinishBalanceWindow.baml
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\AddProductToBasketWindow.g.cs
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\BasketPage.g.cs
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\LikesPage.g.cs
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\AddProductToBasketWindow.baml
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\BasketPage.baml
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\LikesPage.baml

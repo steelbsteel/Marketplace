@@ -42,23 +42,20 @@ namespace Marketplace.Pages
 
         private void LikeBtn_Click(object sender, RoutedEventArgs e)
         {
-            Product product;
-            if (ProductList.SelectedItem != null)
+            var id = (int)((Button)sender).Tag;
+            Product product = App.Connection.Product.First(x => x.idProduct == id);
+            try
             {
-                try
-                {
-                    product = ProductList.SelectedItem as Product;
-                    Like like = new Like();
-                    like.idProduct = product.idProduct;
-                    like.idUser = userInfo.idUser;
-                    App.Connection.Like.Add(like);
-                    App.Connection.SaveChanges();
-                }
-                catch 
-                {
-                    MessageBox.Show("Ошибка", "Внимание", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                Like like = new Like();
+                like.idProduct = product.idProduct;
+                like.idUser = userInfo.idUser;
+                App.Connection.Like.Add(like);
+                App.Connection.SaveChanges();
             }
+            catch 
+            {
+                MessageBox.Show("Ошибка", "Внимание", MessageBoxButton.OK, MessageBoxImage.Error);
+            }       
         }
 
         private void NameMouseDown(object sender, MouseButtonEventArgs e)
@@ -71,23 +68,21 @@ namespace Marketplace.Pages
 
         private void BuyBtnClick(object sender, RoutedEventArgs e)
         {
-            Product product;
-            if (ProductList.SelectedItem != null)
+            var id = (int)((Button)sender).Tag;
+            Product product = App.Connection.Product.First(x => x.idProduct == id);
+            try
             {
-                try
-                {
-                    product = ProductList.SelectedItem as Product;
-                    BasketProduct bProduct = new BasketProduct();
-                    bProduct.idProduct = product.idProduct;
-                    bProduct.idBasket = DBMethods.GetBasketByUser(userInfo).idBasket;
-                    App.Connection.BasketProduct.Add(bProduct);
-                    App.Connection.SaveChanges();
-                }
-                catch
-                {
-                    MessageBox.Show("Ошибка", "Внимание", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                var window = new AddProductToBasketWindow(userInfo, product).ShowDialog();
             }
+            catch
+            {
+                MessageBox.Show("Ошибка", "Внимание", MessageBoxButton.OK, MessageBoxImage.Error);
+            }       
+        }
+
+        private void GoToBasketBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new BasketPage(userInfo));
         }
     }
 }

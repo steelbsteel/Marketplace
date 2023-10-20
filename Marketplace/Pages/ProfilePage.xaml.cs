@@ -48,5 +48,15 @@ namespace Marketplace.Pages
             }
             
         }
+
+        private void GoToLikesBtnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new LikesPage(userInfo));
+        }
+
+        private void GoToBasketBtnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new BasketPage(userInfo));
+        }
     }
 }

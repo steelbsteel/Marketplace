@@ -11,14 +11,15 @@ namespace Marketplace.DB
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public partial class BasketProduct
     {
         public int idBasketProduct { get; set; }
         public int idBasket { get; set; }
         public int idProduct { get; set; }
         public int Count { get; set; }
-    
+
         public virtual Basket Basket { get; set; }
         public virtual Product Product { get; set; }
     }

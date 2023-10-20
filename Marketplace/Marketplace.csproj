@@ -137,8 +137,17 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AddProductToBasketWindow.xaml.cs">
+      <DependentUpon>AddProductToBasketWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BasketPage.xaml.cs">
+      <DependentUpon>BasketPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LikesPage.xaml.cs">
+      <DependentUpon>LikesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MarketplacePage.xaml.cs">
       <DependentUpon>MarketplacePage.xaml</DependentUpon>
@@ -157,7 +166,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\AddProductToBasketWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AuthorizationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\BasketPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\LikesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
