@@ -21,12 +21,14 @@ namespace Marketplace.Pages
     /// </summary>
     public partial class MarketplacePage : Page
     {
+        User userInfo;
         public MarketplacePage(User user)
         {
             InitializeComponent();
+            userInfo = user;
             NameLabel.Content = user.Name;
             SurnameLabel.Content = user.Surname;
-            BalanceLabel.Content = $"{user.Balance.ToString()} руб";
+            ProductList.ItemsSource = App.Connection.Product.ToList();
         }
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
@@ -36,6 +38,56 @@ namespace Marketplace.Pages
             {
                 NavigationService.Navigate(new AuthorizationPage());
             }
-        } 
+        }
+
+        private void LikeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Product product;
+            if (ProductList.SelectedItem != null)
+            {
+                try
+                {
+                    product = ProductList.SelectedItem as Product;
+                    Like like = new Like();
+                    like.idProduct = product.idProduct;
+                    like.idUser = userInfo.idUser;
+                    App.Connection.Like.Add(like);
+                    App.Connection.SaveChanges();
+                }
+                catch 
+                {
+                    MessageBox.Show("Ошибка", "Внимание", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        private void NameMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (userInfo.idRole == 1)
+            {
+                NavigationService.Navigate(new ProfilePage(userInfo));
+            }
+        }
+
+        private void BuyBtnClick(object sender, RoutedEventArgs e)
+        {
+            Product product;
+            if (ProductList.SelectedItem != null)
+            {
+                try
+                {
+                    product = ProductList.SelectedItem as Product;
+                    BasketProduct bProduct = new BasketProduct();
+                    bProduct.idProduct = product.idProduct;
+                    bProduct.idBasket = DBMethods.GetBasketByUser(userInfo).idBasket;
+                    App.Connection.BasketProduct.Add(bProduct);
+                    App.Connection.SaveChanges();
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка", "Внимание", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
     }
 }

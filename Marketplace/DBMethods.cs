@@ -26,5 +26,10 @@ namespace Marketplace
         {
             return App.Connection.User.First(x => x.idAuthorization == auth.idAuthorization);
         }
+
+        public static Basket GetBasketByUser(User user)
+        {
+            return App.Connection.Basket.First(x => x.idUser == user.idUser);
+        }
     }
 }

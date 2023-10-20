@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\user\source\repos\Marketplace\Marketplace\App.xaml
-4-1334406337
+7716870660
 2-973498431
-31-88726895
+34-1744573416
 181081114313
-MainWindow.xaml;Pages\AuthorizationPage.xaml;Pages\MarketplacePage.xaml;Pages\RegistrationPage.xaml;
+MainWindow.xaml;Pages\AddProductToBasketWindow.xaml;Pages\AuthorizationPage.xaml;Pages\MarketplacePage.xaml;Pages\ProfilePage.xaml;Pages\RegistrationPage.xaml;Pages\ReplinishBalanceWindow.xaml;
 
-False
+True
 

@@ -28,3 +28,7 @@ C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\MainWindow.g.cs
 C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\MainWindow.baml
 C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\MarketplacePage.g.cs
 C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\MarketplacePage.baml
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\ProfilePage.g.cs
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\ProfilePage.baml
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\ReplinishBalanceWindow.g.cs
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\ReplinishBalanceWindow.baml

@@ -1,0 +1,17 @@
+﻿<Window x:Class="Marketplace.Pages.ReplinishBalanceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Marketplace.Pages"
+        mc:Ignorable="d"
+        Title="ReplinishBalanceWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="GoBackBtn" Content="Назад" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="30" Width="100" Click="GoBackBtnClick"></Button>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="100">
+            <Label Content="Введите сумму" HorizontalAlignment="Center"/>
+            <TextBox FontSize="30" x:Name="SumTB" Margin="30" Width="500"/>
+            <Button FontSize="30" Content="Пополнить" Height="40" Click="ReplinishBtnClick"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

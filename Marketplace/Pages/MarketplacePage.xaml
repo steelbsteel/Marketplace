@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
         <StackPanel Background="#353831">
             <StackPanel.Effect>
-                <DropShadowEffect Opacity="0.5" RenderingBias="Performance" Direction="315" ShadowDepth="3" BlurRadius="3" />
+                <DropShadowEffect Opacity="0.5" RenderingBias="Performance" Direction="270" ShadowDepth="5" BlurRadius="10"/>
             </StackPanel.Effect>
         </StackPanel>
         <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
@@ -22,18 +22,17 @@
             <Button Content="Корзина" FontWeight="Light" Width="140" FontSize="25" Margin="10"  Background="#FEF9EF" Foreground="#353831"></Button>
             <Button Content="Маркетплейс" FontWeight="Light" Width="180" FontSize="25" Margin="10"  Background="#FEF9EF" Foreground="#353831"></Button>
             <Image Source="/Pages/logoWhite.png" Width="300" Margin="70 0 0 0"></Image>
-            <Label FontStyle="Italic" Foreground="#FEF9EF" VerticalAlignment="Center" Margin="80 0 0 0" Content="Имя" x:Name="NameLabel"></Label>
-            <Label FontStyle="Italic" Foreground="#FEF9EF" VerticalAlignment="Center" Margin="30 0 0 0" Content="Фамилия" x:Name="SurnameLabel"></Label>
-            <Label FontStyle="Italic" Foreground="#FEF9EF" VerticalAlignment="Center" Margin="30 0 0 0" Content="Р" x:Name="BalanceLabel"></Label>
+            <Label MouseDown="NameMouseDown" FontStyle="Italic" Foreground="#FEF9EF" VerticalAlignment="Center" Margin="80 0 0 0" Content="Имя" x:Name="NameLabel"></Label>
+            <Label MouseDown="NameMouseDown" FontStyle="Italic" Foreground="#FEF9EF" VerticalAlignment="Center" Margin="30 0 0 0" Content="Фамилия" x:Name="SurnameLabel"></Label>
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Row="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Label Content="Поиск:" VerticalAlignment="Center" FontWeight="Light"/>
                 <Border  BorderThickness="1" BorderBrush="#353831" Margin="30">
-                    <TextBox Background="#FEF9EF" Width="1000"></TextBox>
+                    <TextBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FEF9EF" Width="1000"></TextBox>
                 </Border>
             </StackPanel>
-            <ListView Grid.Row="3" x:Name="ProductList" BorderBrush="#FEF9EF" Background="#FEF9EF" ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=30}">
+            <ListView Grid.Row="3" HorizontalAlignment="Center" x:Name="ProductList" BorderBrush="#FEF9EF" Background="#FEF9EF" ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=30}">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Margin="0"></WrapPanel>
@@ -41,17 +40,19 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal" Margin="0 0 0 30" Background="#353831">
+                        <StackPanel Orientation="Horizontal" Margin="30 0 30 30" Background="#353831">
                             <StackPanel.Effect>
-                                <DropShadowEffect Opacity="0.5" RenderingBias="Performance" Direction="315" ShadowDepth="3" BlurRadius="20" />
+                                <DropShadowEffect Opacity="10" RenderingBias="Performance" Direction="270" ShadowDepth="3" BlurRadius="30" />
                             </StackPanel.Effect>
                             <StackPanel Orientation="Vertical" Margin="10" Width="400">
-                                <Image Source="{Binding Image}" Height="300" Width="300"/>
+                                <Border BorderBrush="Black" BorderThickness="3">
+                                     <Image Source="{Binding Image}" Height="300" Width="300"/>
+                                </Border>
                                 <Label Foreground="#FEF9EF" Content="{Binding Title}" HorizontalAlignment="Center"/>
                                 <Label Foreground="#FEF9EF" Content="{Binding Cost}" HorizontalAlignment="Center"/>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button Content="♥" x:Name="LikeBtn" VerticalAlignment="Center" FontSize="60" HorizontalAlignment="Left"></Button>
-                                    <Button Content="🛒" x:Name="BuyBtn" VerticalAlignment="Center" FontSize="40" HorizontalAlignment="Right" Margin="300 10 0 0"></Button>
+                                    <Button Content="♥" x:Name="LikeBtn" VerticalAlignment="Center" FontSize="60" HorizontalAlignment="Left" Click="LikeBtn_Click"></Button>
+                                    <Button Content="🛒" Click="BuyBtnClick" x:Name="BuyBtn" VerticalAlignment="Center" FontSize="40" HorizontalAlignment="Right" Margin="300 10 0 0"></Button>
                                 </StackPanel>
                             </StackPanel>
                             <Separator Height="5" Opacity="0"/>
@@ -62,3 +63,4 @@
         </StackPanel>
     </Grid>
 </Page>
+ 
