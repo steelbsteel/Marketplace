@@ -12,9 +12,7 @@ C:\Users\user\source\repos\Marketplace\Marketplace\bin\Debug\EntityFramework.Sql
 C:\Users\user\source\repos\Marketplace\Marketplace\bin\Debug\EntityFramework.xml
 C:\Users\user\source\repos\Marketplace\Marketplace\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\user\source\repos\Marketplace\Marketplace\bin\Debug\ru\EntityFramework.resources.dll
-C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\AuthorizationPage.g.cs
 C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\App.baml
-C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\AuthorizationPage.baml
 C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Marketplace.g.resources
 C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Marketplace.Properties.Resources.resources
 C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Marketplace.csproj.GenerateResource.cache
@@ -22,19 +20,31 @@ C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Marketplace.csproj.
 C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Marketplace.csproj.CopyComplete
 C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Marketplace.exe
 C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Marketplace.pdb
-C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\RegistrationPage.g.cs
-C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\RegistrationPage.baml
-C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\MainWindow.g.cs
-C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\MainWindow.baml
-C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\MarketplacePage.g.cs
-C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\MarketplacePage.baml
-C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\ProfilePage.g.cs
-C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\ProfilePage.baml
-C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\ReplinishBalanceWindow.g.cs
-C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\ReplinishBalanceWindow.baml
-C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\AddProductToBasketWindow.g.cs
-C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\BasketPage.g.cs
-C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\LikesPage.g.cs
-C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\AddProductToBasketWindow.baml
-C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\BasketPage.baml
-C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\LikesPage.baml
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\AddProductToBasketWindow.g.cs
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\BasketPage.g.cs
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\LikesPage.g.cs
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\MarketplacePage.g.cs
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\Customer pages\ProfilePage.g.cs
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\RegistrationPage.g.cs
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\ReplinishBalanceWindow.g.cs
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\Seller pages\SellerPage.g.cs
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\MainWindow.g.cs
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\AuthorizationPage.g.cs
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\MainWindow.baml
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\AddProductToBasketWindow.baml
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\AuthorizationPage.baml
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\BasketPage.baml
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\LikesPage.baml
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\MarketplacePage.baml
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\Customer pages\ProfilePage.baml
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\RegistrationPage.baml
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\ReplinishBalanceWindow.baml
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\Seller pages\SellerPage.baml
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\Seller pages\CreateNewProductPage.g.cs
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\Seller pages\CreateNewProductPage.baml
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\Seller pages\SellsPage.g.cs
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\Seller pages\SellsPage.baml
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\Seller pages\MakeSupplyPage.g.cs
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\Seller pages\MakeSupplyPage.baml
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\Seller pages\SuppliesListPage.g.cs
+C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\Seller pages\SuppliesListPage.baml

@@ -15,10 +15,10 @@ namespace Marketplace.DB
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class MarketplaceEntities1 : DbContext
+    public partial class MarketplaceEntities3 : DbContext
     {
-        public MarketplaceEntities1()
-            : base("name=MarketplaceEntities1")
+        public MarketplaceEntities3()
+            : base("name=MarketplaceEntities3")
         {
         }
     
@@ -38,11 +38,13 @@ namespace Marketplace.DB
         public virtual DbSet<ProductBirthRate> ProductBirthRate { get; set; }
         public virtual DbSet<ProductCategory> ProductCategory { get; set; }
         public virtual DbSet<Role> Role { get; set; }
+        public virtual DbSet<Sell> Sell { get; set; }
+        public virtual DbSet<Sell_User> Sell_User { get; set; }
         public virtual DbSet<Storage> Storage { get; set; }
-        public virtual DbSet<Supply> Supply { get; set; }
         public virtual DbSet<Supply_Product> Supply_Product { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Supply> Supply { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

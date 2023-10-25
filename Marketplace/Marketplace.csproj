@@ -64,7 +64,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DBMethods.cs" />
+    <Compile Include="Classes\SupplyInfo.cs" />
+    <Compile Include="Classes\DBMethods.cs" />
     <Compile Include="DB\Authorization.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -113,6 +114,12 @@
     <Compile Include="DB\Role.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB\Sell.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Sell_User.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -134,75 +141,111 @@
     <Compile Include="DB\User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Pages\General pages\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AddProductToBasketWindow.xaml.cs">
+    <Compile Include="Pages\General pages\AddProductToBasketWindow.xaml.cs">
       <DependentUpon>AddProductToBasketWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AuthorizationPage.xaml.cs">
+    <Compile Include="Pages\General pages\AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\BasketPage.xaml.cs">
+    <Compile Include="Pages\General pages\BasketPage.xaml.cs">
       <DependentUpon>BasketPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\LikesPage.xaml.cs">
+    <Compile Include="Pages\General pages\LikesPage.xaml.cs">
       <DependentUpon>LikesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MarketplacePage.xaml.cs">
+    <Compile Include="Pages\General pages\MarketplacePage.xaml.cs">
       <DependentUpon>MarketplacePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ProfilePage.xaml.cs">
+    <Compile Include="Pages\Customer pages\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\RegistrationPage.xaml.cs">
+    <Compile Include="Pages\General pages\RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Pages\General pages\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\AddProductToBasketWindow.xaml">
+    <Page Include="Pages\General pages\AddProductToBasketWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\AuthorizationPage.xaml">
+    <Page Include="Pages\General pages\AuthorizationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\BasketPage.xaml">
+    <Page Include="Pages\General pages\BasketPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\LikesPage.xaml">
+    <Page Include="Pages\General pages\LikesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\MarketplacePage.xaml">
+    <Page Include="Pages\General pages\MarketplacePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ProfilePage.xaml">
+    <Page Include="Pages\Customer pages\ProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\RegistrationPage.xaml">
+    <Page Include="Pages\General pages\RegistrationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ReplinishBalanceWindow.xaml">
+    <Page Include="Pages\General pages\ReplinishBalanceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Seller pages\CreateNewProductPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Seller pages\MakeSupplyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Seller pages\SellerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Seller pages\SellsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Seller pages\SuppliesListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pages\ReplinishBalanceWindow.xaml.cs">
+    <Compile Include="Pages\General pages\ReplinishBalanceWindow.xaml.cs">
       <DependentUpon>ReplinishBalanceWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Seller pages\CreateNewProductPage.xaml.cs">
+      <DependentUpon>CreateNewProductPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Seller pages\MakeSupplyPage.xaml.cs">
+      <DependentUpon>MakeSupplyPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Seller pages\SellerPage.xaml.cs">
+      <DependentUpon>SellerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Seller pages\SellsPage.xaml.cs">
+      <DependentUpon>SellsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Seller pages\SuppliesListPage.xaml.cs">
+      <DependentUpon>SuppliesListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\ProductSell.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -237,6 +280,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Pages\logoWhite.png" />
+    <Resource Include="Pages\logoBlack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="DB\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -247,14 +300,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Resource Include="Pages\logoWhite.png" />
-    <Resource Include="Pages\logoBlack.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

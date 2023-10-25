@@ -24,6 +24,7 @@ namespace Marketplace.DB
         public System.DateTime Date { get; set; }
         public int idStorage { get; set; }
         public int idUser { get; set; }
+        public bool Accepted { get; set; }
     
         public virtual Storage Storage { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,0 +1,49 @@
+﻿<Page x:Class="Marketplace.Pages.Seller_pages.SellsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Marketplace.Pages.Seller_pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Title="SellsPage"
+      Loaded="PageLoaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="91*"/>
+            <RowDefinition Height="629*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Background="#353831">
+            <StackPanel.Effect>
+                <DropShadowEffect Opacity="0.5" RenderingBias="Performance" Direction="270" ShadowDepth="5" BlurRadius="10" />
+            </StackPanel.Effect>
+        </StackPanel>
+        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+            <Button x:Name="BackBtn" Content="Назад" FontWeight="Light" Width="100" FontSize="25" Background="#FEF9EF" Margin="10" Foreground="#353831" Click="BackClick"></Button>
+            <Button x:Name="BasketBtn" Content="Корзина" FontWeight="Light" Width="140" FontSize="25" Margin="10"  Background="#FEF9EF" Foreground="#353831" Click="GoToBasketBtnClick"></Button>
+            <Button x:Name="MarketplaceBtn" Content="Маркетплейс" FontWeight="Light" Width="180" FontSize="25" Margin="10"  Background="#FEF9EF" Foreground="#353831" Click="MarketplaceBtnClick"></Button>
+            <Image Source="/Pages/logoWhite.png" Width="300" Margin="70 0 0 0"></Image>
+            <Label MouseDown="NameMouseDown" FontStyle="Italic" Foreground="#FEF9EF" VerticalAlignment="Center" Margin="80 0 0 0" Content="{Binding Name}" x:Name="NameLabel"></Label>
+            <Label MouseDown="NameMouseDown" FontStyle="Italic" Foreground="#FEF9EF" VerticalAlignment="Center" Margin="30 0 0 0" Content="{Binding Surname}" x:Name="SurnameLabel"></Label>
+        </StackPanel>
+        <Label Content="Продажи" Grid.Row="1" HorizontalAlignment="Center" Margin="20" FontWeight="Black"></Label>
+        <Label Content="Пока продажи отсутствуют" x:Name="NoSellsText" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" FontWeight="Black"></Label>
+        <ListView x:Name="ProductsSelledLV" Margin="0 100 0 0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="False" Grid.Row="3" BorderBrush="#FEF9EF" Background="#353831" ScrollViewer.VerticalScrollBarVisibility="Visible"  d:ItemsSource="{d:SampleData ItemCount=3}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <Image Source="{Binding Image}" Height="300" Width="300"></Image>
+                            <Label Content="{Binding Title}" VerticalAlignment="Center" Foreground="#FEF9EF" Margin="20 0 0 0"></Label>
+                            <Label Content="{Binding Date}" VerticalAlignment="Center" Foreground="#FEF9EF" Margin="50 0 0 0"></Label>
+                            <Label Content="+" VerticalAlignment="Center" Margin="500 0 0 0" Foreground="#FF61F118" ></Label>
+                            <Label Content="{Binding Sallary}" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#FF61F118" Margin="0 0 0 0"></Label>
+                        </StackPanel>
+                        <Separator Width="1280" Background="White" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
