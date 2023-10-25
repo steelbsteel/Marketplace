@@ -40,9 +40,13 @@
                     <StackPanel Orientation="Vertical" Margin="10 10 0 5">
                         <TextBox x:Name="TitleTB" Width="300" Margin="10"></TextBox>
                         <ComboBox x:Name="CategoryCB" Margin="10">
-                            <ComboBoxItem Content="Инструменты"></ComboBoxItem>
-                            <ComboBoxItem Content="Одежда"></ComboBoxItem>
-                            <ComboBoxItem Content="Другое"></ComboBoxItem>
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Title}" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
                         </ComboBox>
                         <TextBox x:Name="CostTB" Width="300" Margin="10"></TextBox>
                         <ComboBox x:Name="AgeCategoryCB" Margin="10">

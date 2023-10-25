@@ -1,17 +1,18 @@
 ﻿
-FC:\Users\user\source\repos\Marketplace\Marketplace\App.xaml;;
-FC:\Users\user\source\repos\Marketplace\Marketplace\Pages\General pages\MainWindow.xaml;;
-FC:\Users\user\source\repos\Marketplace\Marketplace\Pages\General pages\AddProductToBasketWindow.xaml;;
-FC:\Users\user\source\repos\Marketplace\Marketplace\Pages\General pages\AuthorizationPage.xaml;;
-FC:\Users\user\source\repos\Marketplace\Marketplace\Pages\General pages\BasketPage.xaml;;
-FC:\Users\user\source\repos\Marketplace\Marketplace\Pages\General pages\LikesPage.xaml;;
-FC:\Users\user\source\repos\Marketplace\Marketplace\Pages\General pages\MarketplacePage.xaml;;
-FC:\Users\user\source\repos\Marketplace\Marketplace\Pages\Customer pages\ProfilePage.xaml;;
-FC:\Users\user\source\repos\Marketplace\Marketplace\Pages\General pages\RegistrationPage.xaml;;
-FC:\Users\user\source\repos\Marketplace\Marketplace\Pages\General pages\ReplinishBalanceWindow.xaml;;
-FC:\Users\user\source\repos\Marketplace\Marketplace\Pages\Seller pages\CreateNewProductPage.xaml;;
-FC:\Users\user\source\repos\Marketplace\Marketplace\Pages\Seller pages\SellerPage.xaml;;
-FC:\Users\user\source\repos\Marketplace\Marketplace\Pages\Seller pages\SellsPage.xaml;;
-FC:\Users\user\source\repos\Marketplace\Marketplace\Pages\Seller pages\MakeSupplyPage.xaml;;
-FC:\Users\user\source\repos\Marketplace\Marketplace\Pages\Seller pages\SuppliesListPage.xaml;;
+FC:\Users\202001\Source\Repos\Marketplace\Marketplace\App.xaml;;
+FC:\Users\202001\Source\Repos\Marketplace\Marketplace\Pages\General pages\MainWindow.xaml;;
+FC:\Users\202001\Source\Repos\Marketplace\Marketplace\Pages\General pages\AddProductToBasketWindow.xaml;;
+FC:\Users\202001\Source\Repos\Marketplace\Marketplace\Pages\General pages\AuthorizationPage.xaml;;
+FC:\Users\202001\Source\Repos\Marketplace\Marketplace\Pages\General pages\BasketPage.xaml;;
+FC:\Users\202001\Source\Repos\Marketplace\Marketplace\Pages\General pages\LikesPage.xaml;;
+FC:\Users\202001\Source\Repos\Marketplace\Marketplace\Pages\General pages\MarketplacePage.xaml;;
+FC:\Users\202001\Source\Repos\Marketplace\Marketplace\Pages\Customer pages\ProfilePage.xaml;;
+FC:\Users\202001\Source\Repos\Marketplace\Marketplace\Pages\General pages\RegistrationPage.xaml;;
+FC:\Users\202001\Source\Repos\Marketplace\Marketplace\Pages\General pages\ReplinishBalanceWindow.xaml;;
+FC:\Users\202001\Source\Repos\Marketplace\Marketplace\Pages\Seller pages\CreateNewProductPage.xaml;;
+FC:\Users\202001\Source\Repos\Marketplace\Marketplace\Pages\Seller pages\MakeSupplyPage.xaml;;
+FC:\Users\202001\Source\Repos\Marketplace\Marketplace\Pages\Seller pages\SellerPage.xaml;;
+FC:\Users\202001\Source\Repos\Marketplace\Marketplace\Pages\Seller pages\SellsPage.xaml;;
+FC:\Users\202001\Source\Repos\Marketplace\Marketplace\Pages\Seller pages\SuppliesListPage.xaml;;
+FC:\Users\202001\Source\Repos\Marketplace\Marketplace\Pages\Seller pages\RequestsSellerPage.xaml;;
 

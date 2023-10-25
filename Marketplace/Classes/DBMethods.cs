@@ -183,5 +183,10 @@ namespace Marketplace
             else
                 return false;
         }
+
+        public static List<Supply_Product> GetAllSupplies()
+        {
+
+        }
     }
 }

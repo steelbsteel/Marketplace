@@ -1,0 +1,52 @@
+﻿<Page x:Class="Marketplace.Pages.Admin_pages.AdminSuppliesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Marketplace.Pages.Admin_pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Title="AdminSuppliesPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="91*"/>
+            <RowDefinition Height="629*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Background="#353831">
+            <StackPanel.Effect>
+                <DropShadowEffect Opacity="0.5" RenderingBias="Performance" Direction="270" ShadowDepth="5" BlurRadius="10" />
+            </StackPanel.Effect>
+        </StackPanel>
+        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+            <Button x:Name="BackBtn" Content="Главная" FontWeight="Light" Width="100" FontSize="25" Background="#FEF9EF" Margin="10" Foreground="#353831" Click="BackClick"></Button>
+            <Image Source="/Pages/logoWhite.png" Width="300" Margin="350 0 0 0"></Image>
+            <Label FontStyle="Italic" Foreground="#FEF9EF" VerticalAlignment="Center" Margin="80 0 0 0" Content="Администратор" x:Name="NameLabel"></Label>
+        </StackPanel>
+        <Label x:Name="TodaysSuppliesLabel" Grid.Row="1" HorizontalAlignment="Center" Content="Ближайшие поставки" Margin="20" FontWeight="Black"></Label>
+        <Label x:Name="NoTodaysSuppliesLabel" Grid.Row="1" HorizontalAlignment="Center" Content="На сегодня не подано ни одной поставки" VerticalAlignment="Center" Margin="20" FontWeight="Black"></Label>
+        <ListView x:Name="SuppliesLV" Margin="0 100 0 0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="False" Grid.Row="3" BorderBrush="#FEF9EF" Background="#353831" ScrollViewer.VerticalScrollBarVisibility="Visible"  d:ItemsSource="{d:SampleData ItemCount=3}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <Image Height="150" Width="150" Source="{Binding Product.Image}"></Image>
+                        <StackPanel Orientation="Vertical" Margin="10" Width="309"  VerticalAlignment="Center">
+                            <Label Content="Название товара:" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="10 0 0 0"></Label>
+                            <Label Content="{Binding Product.Title}" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="10 0 0 0"></Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Margin="10" Width="400"  VerticalAlignment="Center">
+                            <Label Content="Склад:" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="0 0 0 0"></Label>
+                            <Label Content="{Binding Storage.Address}" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="0 0 0 0"></Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Margin="10" Width="250" VerticalAlignment="Center">
+                            <Button Tag="{Binding idProductAddRequest}" Content="Принять" Background="#FEF9EF" Foreground="Black" Height="50" Margin="0 0 0 10" Width="200" FontSize="30" Click="AcceptSupplyButton"></Button>
+                            <Button Tag="{Binding idProductAddRequest}" Content="Отклонить" Background="#FEF9EF" Foreground="Black" Height="50" Width="200" FontSize="30" Click="RejectBtnClick"></Button>
+                        </StackPanel>
+                    </StackPanel>
+                        <Separator Margin="0 15 0 15" HorizontalAlignment="Center" Width="800"></Separator>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

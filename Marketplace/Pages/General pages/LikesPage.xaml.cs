@@ -25,15 +25,19 @@ namespace Marketplace.Pages
         User userInfo;
         public LikesPage(User user)
         {
-
+            userInfo = user;
+            InitializeComponent();
             List<Product> products = DBMethods.GetAllBasketProduct(user);
             if (products.Count > 0)
             {
                 ProductList.ItemsSource = products;
+                NoProductsInLikesLabel.Visibility = Visibility.Hidden;
             }
-
-            userInfo = user;
-            InitializeComponent();
+            else
+            {
+                ProductList.Visibility = Visibility.Hidden;
+                NoProductsInLikesLabel.Visibility = Visibility.Visible;
+            }
         }
 
         private void NameMouseDown(object sender, MouseButtonEventArgs e)

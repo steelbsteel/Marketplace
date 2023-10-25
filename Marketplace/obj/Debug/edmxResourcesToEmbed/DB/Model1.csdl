@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="MarketplaceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="MplaceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Authorization">
     <Key>
       <PropertyRef Name="idAuthorization" />
@@ -144,7 +144,20 @@
     <Property Name="idStorage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Product_Storage" Relationship="Self.FK_Product_Storage_Storage" FromRole="Storage" ToRole="Product_Storage" />
-    <NavigationProperty Name="Supply" Relationship="MarketplaceModel.FK_Supply_Storage" FromRole="Storage" ToRole="Supply" />
+    <NavigationProperty Name="Supply" Relationship="Self.FK_Supply_Storage" FromRole="Storage" ToRole="Supply" />
+  </EntityType>
+  <EntityType Name="Supply">
+    <Key>
+      <PropertyRef Name="idSupply" />
+    </Key>
+    <Property Name="idSupply" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="idStorage" Type="Int32" Nullable="false" />
+    <Property Name="idUser" Type="Int32" Nullable="false" />
+    <Property Name="Accepted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Storage" Relationship="Self.FK_Supply_Storage" FromRole="Supply" ToRole="Storage" />
+    <NavigationProperty Name="Supply_Product" Relationship="Self.FK_Supply_Product_Supply" FromRole="Supply" ToRole="Supply_Product" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Supply_User" FromRole="Supply" ToRole="User" />
   </EntityType>
   <EntityType Name="Supply_Product">
     <Key>
@@ -154,7 +167,7 @@
     <Property Name="idSupply" Type="Int32" Nullable="false" />
     <Property Name="idProduct" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Product" Relationship="Self.FK_Supply_Product_Product" FromRole="Supply_Product" ToRole="Product" />
-    <NavigationProperty Name="Supply" Relationship="MarketplaceModel.FK_Supply_Product_Supply" FromRole="Supply_Product" ToRole="Supply" />
+    <NavigationProperty Name="Supply" Relationship="Self.FK_Supply_Product_Supply" FromRole="Supply_Product" ToRole="Supply" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -184,7 +197,7 @@
     <NavigationProperty Name="ProductAddRequest" Relationship="Self.FK_ProductAddRequest_User" FromRole="User" ToRole="ProductAddRequest" />
     <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
     <NavigationProperty Name="Sell_User" Relationship="Self.FK_Sell_User_User" FromRole="User" ToRole="Sell_User" />
-    <NavigationProperty Name="Supply" Relationship="MarketplaceModel.FK_Supply_User" FromRole="User" ToRole="Supply" />
+    <NavigationProperty Name="Supply" Relationship="Self.FK_Supply_User" FromRole="User" ToRole="Supply" />
   </EntityType>
   <Association Name="FK_User_Authorization">
     <End Role="Authorization" Type="Self.Authorization" Multiplicity="1" />
@@ -414,7 +427,43 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="MarketplaceEntities3" annotation:LazyLoadingEnabled="true">
+  <Association Name="FK_Supply_Storage">
+    <End Role="Storage" Type="Self.Storage" Multiplicity="1" />
+    <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Storage">
+        <PropertyRef Name="idStorage" />
+      </Principal>
+      <Dependent Role="Supply">
+        <PropertyRef Name="idStorage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supply_Product_Supply">
+    <End Role="Supply" Type="Self.Supply" Multiplicity="1" />
+    <End Role="Supply_Product" Type="Self.Supply_Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supply">
+        <PropertyRef Name="idSupply" />
+      </Principal>
+      <Dependent Role="Supply_Product">
+        <PropertyRef Name="idSupply" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supply_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="Supply">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MplaceEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Authorization" EntityType="Self.Authorization" />
     <EntitySet Name="Basket" EntityType="Self.Basket" />
     <EntitySet Name="BasketProduct" EntityType="Self.BasketProduct" />
@@ -429,6 +478,7 @@
     <EntitySet Name="Sell" EntityType="Self.Sell" />
     <EntitySet Name="Sell_User" EntityType="Self.Sell_User" />
     <EntitySet Name="Storage" EntityType="Self.Storage" />
+    <EntitySet Name="Supply" EntityType="Self.Supply" />
     <EntitySet Name="Supply_Product" EntityType="Self.Supply_Product" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="User" EntityType="Self.User" />
@@ -508,6 +558,18 @@
       <End Role="User" EntitySet="User" />
       <End Role="Sell_User" EntitySet="Sell_User" />
     </AssociationSet>
+    <AssociationSet Name="FK_Supply_Storage" Association="Self.FK_Supply_Storage">
+      <End Role="Storage" EntitySet="Storage" />
+      <End Role="Supply" EntitySet="Supply" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supply_Product_Supply" Association="Self.FK_Supply_Product_Supply">
+      <End Role="Supply" EntitySet="Supply" />
+      <End Role="Supply_Product" EntitySet="Supply_Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supply_User" Association="Self.FK_Supply_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Supply" EntitySet="Supply" />
+    </AssociationSet>
     <FunctionImport Name="sp_alterdiagram">
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -524,11 +586,11 @@
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(MarketplaceModel.sp_helpdiagramdefinition_Result)">
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(MplaceModel.sp_helpdiagramdefinition_Result)">
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(MarketplaceModel.sp_helpdiagrams_Result)">
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(MplaceModel.sp_helpdiagrams_Result)">
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -538,19 +600,6 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
-    <EntitySet Name="Supply" EntityType="MarketplaceModel.Supply" />
-    <AssociationSet Name="FK_Supply_Storage" Association="MarketplaceModel.FK_Supply_Storage">
-      <End Role="Storage" EntitySet="Storage" />
-      <End Role="Supply" EntitySet="Supply" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Supply_Product_Supply" Association="MarketplaceModel.FK_Supply_Product_Supply">
-      <End Role="Supply" EntitySet="Supply" />
-      <End Role="Supply_Product" EntitySet="Supply_Product" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Supply_User" Association="MarketplaceModel.FK_Supply_User">
-      <End Role="User" EntitySet="User" />
-      <End Role="Supply" EntitySet="Supply" />
-    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -563,53 +612,4 @@
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
   </ComplexType>
-  <EntityType Name="Supply">
-    <Key>
-      <PropertyRef Name="idSupply" />
-    </Key>
-    <Property Name="idSupply" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="idStorage" Type="Int32" Nullable="false" />
-    <Property Name="idUser" Type="Int32" Nullable="false" />
-    <Property Name="Accepted" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Storage" Relationship="MarketplaceModel.FK_Supply_Storage" FromRole="Supply" ToRole="Storage" />
-    <NavigationProperty Name="Supply_Product" Relationship="MarketplaceModel.FK_Supply_Product_Supply" FromRole="Supply" ToRole="Supply_Product" />
-    <NavigationProperty Name="User" Relationship="MarketplaceModel.FK_Supply_User" FromRole="Supply" ToRole="User" />
-  </EntityType>
-  <Association Name="FK_Supply_Storage">
-    <End Type="MarketplaceModel.Storage" Role="Storage" Multiplicity="1" />
-    <End Type="MarketplaceModel.Supply" Role="Supply" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Storage">
-        <PropertyRef Name="idStorage" />
-      </Principal>
-      <Dependent Role="Supply">
-        <PropertyRef Name="idStorage" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Supply_Product_Supply">
-    <End Type="MarketplaceModel.Supply" Role="Supply" Multiplicity="1" />
-    <End Type="MarketplaceModel.Supply_Product" Role="Supply_Product" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Supply">
-        <PropertyRef Name="idSupply" />
-      </Principal>
-      <Dependent Role="Supply_Product">
-        <PropertyRef Name="idSupply" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Supply_User">
-    <End Type="MarketplaceModel.User" Role="User" Multiplicity="1" />
-    <End Type="MarketplaceModel.Supply" Role="Supply" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="idUser" />
-      </Principal>
-      <Dependent Role="Supply">
-        <PropertyRef Name="idUser" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema>

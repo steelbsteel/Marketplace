@@ -32,6 +32,7 @@ namespace Marketplace.Pages.Seller_pages
             userInfo = user;
             product = new Product();
             InitializeComponent();
+            CategoryCB.ItemsSource = App.Connection.ProductCategory.ToList();
         }
 
         private void AddImageBtnClick(object sender, RoutedEventArgs e)
@@ -78,7 +79,7 @@ namespace Marketplace.Pages.Seller_pages
             }
             product.Description = DescriptionTB.Text;
             product.Title = TitleTB.Text;
-            product.idProductCategory = CategoryCB.SelectedIndex + 1;
+            product.idProductCategory = (CategoryCB.SelectedItem as ProductCategory).idProductCategory;
             product.idProductBirthRate = CategoryCB.SelectedIndex + 1;
             product.Cost = Convert.ToInt32(CostTB.Text);
             product.Image = DBMethods.getBytesFromImage(ProductImage.Source as BitmapImage);
@@ -89,6 +90,7 @@ namespace Marketplace.Pages.Seller_pages
             ProductAddRequest request = new ProductAddRequest();
             request.idProduct = App.Connection.Product.First(x => x.idUser == userInfo.idUser && x.Title == product.Title).idProduct;
             request.idProductAddRequestStatus = 1;
+            request.idUser = userInfo.idUser;
             App.Connection.ProductAddRequest.Add(request);
             App.Connection.SaveChanges();
             MessageBox.Show("Вы успешно создали заявку на добавление продукта на маркетплейс. Она находится в состоянии обработки. После принятия заявки, вы сможете сделать поставку и ваш товар появится у пользователей.",

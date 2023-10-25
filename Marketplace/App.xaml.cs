@@ -14,6 +14,6 @@ namespace Marketplace
     /// </summary>
     public partial class App : Application
     {
-        public static MarketplaceEntities3 Connection = new MarketplaceEntities3();
+        public static MplaceEntities Connection = new MplaceEntities();
     }
 }

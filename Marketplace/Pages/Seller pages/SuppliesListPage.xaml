@@ -28,10 +28,36 @@
             <Label MouseDown="NameMouseDown" FontStyle="Italic" Foreground="#FEF9EF" VerticalAlignment="Center" Margin="30 0 0 0" Content="{Binding Surname}" x:Name="SurnameLabel"></Label>
         </StackPanel>
         <Label  Grid.Row="1" Content="Ваши поставки" HorizontalAlignment="Center" Margin="15" FontWeight="Black"></Label>
-        <ListView>
+        <ListView x:Name="SuppliesLV" Margin="0 100 0 0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="False" Grid.Row="3" BorderBrush="#FEF9EF" Background="#353831" ScrollViewer.VerticalScrollBarVisibility="Visible"  d:ItemsSource="{d:SampleData ItemCount=3}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel></StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <StackPanel Orientation="Vertical" Margin="10" Width="250">
+                            <Label Content="Дата:" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="50 0 0 0"></Label>
+                            <Label Content="{Binding Date}" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="50 0 0 0"></Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Margin="10" Width="400">
+                            <Label Content="Склад:" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="0 0 0 0"></Label>
+                            <Label Content="{Binding Storage.Address}" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="0 0 0 0"></Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Margin="10" Width="250">
+                            <Label Content="Состояние:" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="0 0 0 0"></Label>
+                            <Label VerticalAlignment="Center" FontSize="30" FontWeight="Light"  HorizontalAlignment="Center" Margin="0 0 0 0">
+                                <Label.Style>
+                                    <Style TargetType="Label">
+                                        <Setter Property="Content" Value="Принята" />
+                                        <Setter Property="Foreground" Value="Green"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Accepted}" Value="False">
+                                                <Setter Property="Content" Value="Не принята" />
+                                                <Setter Property="Foreground" Value="Red"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+                        </StackPanel>
+                    </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

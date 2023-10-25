@@ -43,14 +43,13 @@
                     <StackPanel Orientation="Vertical">
                         <Button Content="Пополнить баланс" Margin="15" Width="530" HorizontalAlignment="Left" Click="ReplinishBalanceBtnClick"/>
                         <Button Content="Просмотреть понравившиеся" Margin="15" Width="530" HorizontalAlignment="Left" Click="GoToLikesBtnClick"/>
-                        <Button Content="Просмотреть корзину" Margin="15" HorizontalAlignment="Left" Width="530" Click="GoToBasketBtnClick"/>
-                        <Button Content="Просмотреть заявки" HorizontalAlignment="Left" Margin="15" Width="530"/>
+                        <Button Content="Просмотреть заявки" HorizontalAlignment="Left" Margin="15" Width="530" Click="GoToRequestsPageBtnClick"/>
                     </StackPanel>
                     <StackPanel Orientation="Vertical">
                         <Button Content="Запланировать поставку" HorizontalAlignment="Left" Margin="15" Width="530" Click="MakeSupplyPage"/>
                         <Button Content="Просмотреть продажи" Click="SellsBtnClick" HorizontalAlignment="Left" Margin="15" Width="530"/>
                         <Button Content="Создать новый продукт" HorizontalAlignment="Left" Margin="15" Width="530" Click="CreateNewProductBtnClick"/>
-                        <Button Content="Просмотреть поставки" HorizontalAlignment="Left" Margin="15" Width="530"/>
+                        <Button Content="Просмотреть поставки" Click="ListOfSuppliesBtnClick" HorizontalAlignment="Left" Margin="15" Width="530"/>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище MarketplaceModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище MplaceModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Authorization">
           <Key>
             <PropertyRef Name="idAuthorization" />
@@ -455,7 +455,7 @@
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <EntityContainer Name="Хранилище MarketplaceModelContainer">
+        <EntityContainer Name="Хранилище MplaceModelContainer">
           <EntitySet Name="Authorization" EntityType="Self.Authorization" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Basket" EntityType="Self.Basket" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BasketProduct" EntityType="Self.BasketProduct" Schema="dbo" store:Type="Tables" />
@@ -563,10 +563,11 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="MarketplaceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="MplaceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Authorization">
           <Key>
             <PropertyRef Name="idAuthorization" />
@@ -711,7 +712,20 @@
           <Property Name="idStorage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Product_Storage" Relationship="Self.FK_Product_Storage_Storage" FromRole="Storage" ToRole="Product_Storage" />
-          <NavigationProperty Name="Supply" Relationship="MarketplaceModel.FK_Supply_Storage" FromRole="Storage" ToRole="Supply" />
+          <NavigationProperty Name="Supply" Relationship="Self.FK_Supply_Storage" FromRole="Storage" ToRole="Supply" />
+        </EntityType>
+        <EntityType Name="Supply">
+          <Key>
+            <PropertyRef Name="idSupply" />
+          </Key>
+          <Property Name="idSupply" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="idStorage" Type="Int32" Nullable="false" />
+          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <Property Name="Accepted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Storage" Relationship="Self.FK_Supply_Storage" FromRole="Supply" ToRole="Storage" />
+          <NavigationProperty Name="Supply_Product" Relationship="Self.FK_Supply_Product_Supply" FromRole="Supply" ToRole="Supply_Product" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Supply_User" FromRole="Supply" ToRole="User" />
         </EntityType>
         <EntityType Name="Supply_Product">
           <Key>
@@ -721,7 +735,7 @@
           <Property Name="idSupply" Type="Int32" Nullable="false" />
           <Property Name="idProduct" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Supply_Product_Product" FromRole="Supply_Product" ToRole="Product" />
-          <NavigationProperty Name="Supply" Relationship="MarketplaceModel.FK_Supply_Product_Supply" FromRole="Supply_Product" ToRole="Supply" />
+          <NavigationProperty Name="Supply" Relationship="Self.FK_Supply_Product_Supply" FromRole="Supply_Product" ToRole="Supply" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -751,7 +765,7 @@
           <NavigationProperty Name="ProductAddRequest" Relationship="Self.FK_ProductAddRequest_User" FromRole="User" ToRole="ProductAddRequest" />
           <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
           <NavigationProperty Name="Sell_User" Relationship="Self.FK_Sell_User_User" FromRole="User" ToRole="Sell_User" />
-          <NavigationProperty Name="Supply" Relationship="MarketplaceModel.FK_Supply_User" FromRole="User" ToRole="Supply" />
+          <NavigationProperty Name="Supply" Relationship="Self.FK_Supply_User" FromRole="User" ToRole="Supply" />
         </EntityType>
         <Association Name="FK_User_Authorization">
           <End Role="Authorization" Type="Self.Authorization" Multiplicity="1" />
@@ -981,7 +995,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MarketplaceEntities3" annotation:LazyLoadingEnabled="true">
+        <Association Name="FK_Supply_Storage">
+          <End Role="Storage" Type="Self.Storage" Multiplicity="1" />
+          <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storage">
+              <PropertyRef Name="idStorage" />
+            </Principal>
+            <Dependent Role="Supply">
+              <PropertyRef Name="idStorage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supply_Product_Supply">
+          <End Role="Supply" Type="Self.Supply" Multiplicity="1" />
+          <End Role="Supply_Product" Type="Self.Supply_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supply">
+              <PropertyRef Name="idSupply" />
+            </Principal>
+            <Dependent Role="Supply_Product">
+              <PropertyRef Name="idSupply" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supply_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="Supply">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MplaceEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Authorization" EntityType="Self.Authorization" />
           <EntitySet Name="Basket" EntityType="Self.Basket" />
           <EntitySet Name="BasketProduct" EntityType="Self.BasketProduct" />
@@ -996,6 +1046,7 @@
           <EntitySet Name="Sell" EntityType="Self.Sell" />
           <EntitySet Name="Sell_User" EntityType="Self.Sell_User" />
           <EntitySet Name="Storage" EntityType="Self.Storage" />
+          <EntitySet Name="Supply" EntityType="Self.Supply" />
           <EntitySet Name="Supply_Product" EntityType="Self.Supply_Product" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="User" EntityType="Self.User" />
@@ -1075,6 +1126,18 @@
             <End Role="User" EntitySet="User" />
             <End Role="Sell_User" EntitySet="Sell_User" />
           </AssociationSet>
+          <AssociationSet Name="FK_Supply_Storage" Association="Self.FK_Supply_Storage">
+            <End Role="Storage" EntitySet="Storage" />
+            <End Role="Supply" EntitySet="Supply" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supply_Product_Supply" Association="Self.FK_Supply_Product_Supply">
+            <End Role="Supply" EntitySet="Supply" />
+            <End Role="Supply_Product" EntitySet="Supply_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supply_User" Association="Self.FK_Supply_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Supply" EntitySet="Supply" />
+          </AssociationSet>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -1091,11 +1154,11 @@
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(MarketplaceModel.sp_helpdiagramdefinition_Result)">
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(MplaceModel.sp_helpdiagramdefinition_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(MarketplaceModel.sp_helpdiagrams_Result)">
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(MplaceModel.sp_helpdiagrams_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -1105,19 +1168,6 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <EntitySet Name="Supply" EntityType="MarketplaceModel.Supply" />
-          <AssociationSet Name="FK_Supply_Storage" Association="MarketplaceModel.FK_Supply_Storage">
-            <End Role="Storage" EntitySet="Storage" />
-            <End Role="Supply" EntitySet="Supply" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Supply_Product_Supply" Association="MarketplaceModel.FK_Supply_Product_Supply">
-            <End Role="Supply" EntitySet="Supply" />
-            <End Role="Supply_Product" EntitySet="Supply_Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Supply_User" Association="MarketplaceModel.FK_Supply_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Supply" EntitySet="Supply" />
-          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1130,63 +1180,14 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <EntityType Name="Supply">
-          <Key>
-            <PropertyRef Name="idSupply" />
-          </Key>
-          <Property Name="idSupply" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="idStorage" Type="Int32" Nullable="false" />
-          <Property Name="idUser" Type="Int32" Nullable="false" />
-          <Property Name="Accepted" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Storage" Relationship="MarketplaceModel.FK_Supply_Storage" FromRole="Supply" ToRole="Storage" />
-          <NavigationProperty Name="Supply_Product" Relationship="MarketplaceModel.FK_Supply_Product_Supply" FromRole="Supply" ToRole="Supply_Product" />
-          <NavigationProperty Name="User" Relationship="MarketplaceModel.FK_Supply_User" FromRole="Supply" ToRole="User" />
-        </EntityType>
-        <Association Name="FK_Supply_Storage">
-          <End Type="MarketplaceModel.Storage" Role="Storage" Multiplicity="1" />
-          <End Type="MarketplaceModel.Supply" Role="Supply" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Storage">
-              <PropertyRef Name="idStorage" />
-            </Principal>
-            <Dependent Role="Supply">
-              <PropertyRef Name="idStorage" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Supply_Product_Supply">
-          <End Type="MarketplaceModel.Supply" Role="Supply" Multiplicity="1" />
-          <End Type="MarketplaceModel.Supply_Product" Role="Supply_Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Supply">
-              <PropertyRef Name="idSupply" />
-            </Principal>
-            <Dependent Role="Supply_Product">
-              <PropertyRef Name="idSupply" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Supply_User">
-          <End Type="MarketplaceModel.User" Role="User" Multiplicity="1" />
-          <End Type="MarketplaceModel.Supply" Role="Supply" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="idUser" />
-            </Principal>
-            <Dependent Role="Supply">
-              <PropertyRef Name="idUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище MarketplaceModelContainer" CdmEntityContainer="MarketplaceEntities3">
+        <EntityContainerMapping StorageEntityContainer="Хранилище MplaceModelContainer" CdmEntityContainer="MplaceEntities">
           <EntitySetMapping Name="Authorization">
-            <EntityTypeMapping TypeName="MarketplaceModel.Authorization">
+            <EntityTypeMapping TypeName="MplaceModel.Authorization">
               <MappingFragment StoreEntitySet="Authorization">
                 <ScalarProperty Name="idAuthorization" ColumnName="idAuthorization" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
@@ -1195,7 +1196,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Basket">
-            <EntityTypeMapping TypeName="MarketplaceModel.Basket">
+            <EntityTypeMapping TypeName="MplaceModel.Basket">
               <MappingFragment StoreEntitySet="Basket">
                 <ScalarProperty Name="idBasket" ColumnName="idBasket" />
                 <ScalarProperty Name="idUser" ColumnName="idUser" />
@@ -1203,7 +1204,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BasketProduct">
-            <EntityTypeMapping TypeName="MarketplaceModel.BasketProduct">
+            <EntityTypeMapping TypeName="MplaceModel.BasketProduct">
               <MappingFragment StoreEntitySet="BasketProduct">
                 <ScalarProperty Name="idBasketProduct" ColumnName="idBasketProduct" />
                 <ScalarProperty Name="idBasket" ColumnName="idBasket" />
@@ -1213,7 +1214,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Like">
-            <EntityTypeMapping TypeName="MarketplaceModel.Like">
+            <EntityTypeMapping TypeName="MplaceModel.Like">
               <MappingFragment StoreEntitySet="Like">
                 <ScalarProperty Name="idLike" ColumnName="idLike" />
                 <ScalarProperty Name="idUser" ColumnName="idUser" />
@@ -1222,7 +1223,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Product">
-            <EntityTypeMapping TypeName="MarketplaceModel.Product">
+            <EntityTypeMapping TypeName="MplaceModel.Product">
               <MappingFragment StoreEntitySet="Product">
                 <ScalarProperty Name="idProduct" ColumnName="idProduct" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -1237,7 +1238,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Product_Storage">
-            <EntityTypeMapping TypeName="MarketplaceModel.Product_Storage">
+            <EntityTypeMapping TypeName="MplaceModel.Product_Storage">
               <MappingFragment StoreEntitySet="Product_Storage">
                 <ScalarProperty Name="idProduct_Storage" ColumnName="idProduct_Storage" />
                 <ScalarProperty Name="idProduct" ColumnName="idProduct" />
@@ -1246,7 +1247,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductAddRequest">
-            <EntityTypeMapping TypeName="MarketplaceModel.ProductAddRequest">
+            <EntityTypeMapping TypeName="MplaceModel.ProductAddRequest">
               <MappingFragment StoreEntitySet="ProductAddRequest">
                 <ScalarProperty Name="idProductAddRequest" ColumnName="idProductAddRequest" />
                 <ScalarProperty Name="idProduct" ColumnName="idProduct" />
@@ -1256,7 +1257,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductAddRequestStatus">
-            <EntityTypeMapping TypeName="MarketplaceModel.ProductAddRequestStatus">
+            <EntityTypeMapping TypeName="MplaceModel.ProductAddRequestStatus">
               <MappingFragment StoreEntitySet="ProductAddRequestStatus">
                 <ScalarProperty Name="idProductAddRequestStatus" ColumnName="idProductAddRequestStatus" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
@@ -1264,7 +1265,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductBirthRate">
-            <EntityTypeMapping TypeName="MarketplaceModel.ProductBirthRate">
+            <EntityTypeMapping TypeName="MplaceModel.ProductBirthRate">
               <MappingFragment StoreEntitySet="ProductBirthRate">
                 <ScalarProperty Name="idProductBirthRate" ColumnName="idProductBirthRate" />
                 <ScalarProperty Name="BirthRate" ColumnName="BirthRate" />
@@ -1272,7 +1273,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductCategory">
-            <EntityTypeMapping TypeName="MarketplaceModel.ProductCategory">
+            <EntityTypeMapping TypeName="MplaceModel.ProductCategory">
               <MappingFragment StoreEntitySet="ProductCategory">
                 <ScalarProperty Name="idProductCategory" ColumnName="idProductCategory" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -1280,7 +1281,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Role">
-            <EntityTypeMapping TypeName="MarketplaceModel.Role">
+            <EntityTypeMapping TypeName="MplaceModel.Role">
               <MappingFragment StoreEntitySet="Role">
                 <ScalarProperty Name="idRole" ColumnName="idRole" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -1288,7 +1289,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sell">
-            <EntityTypeMapping TypeName="MarketplaceModel.Sell">
+            <EntityTypeMapping TypeName="MplaceModel.Sell">
               <MappingFragment StoreEntitySet="Sell">
                 <ScalarProperty Name="idSell" ColumnName="idSell" />
                 <ScalarProperty Name="idProduct" ColumnName="idProduct" />
@@ -1298,7 +1299,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sell_User">
-            <EntityTypeMapping TypeName="MarketplaceModel.Sell_User">
+            <EntityTypeMapping TypeName="MplaceModel.Sell_User">
               <MappingFragment StoreEntitySet="Sell_User">
                 <ScalarProperty Name="idSell_User" ColumnName="idSell_User" />
                 <ScalarProperty Name="idUser" ColumnName="idUser" />
@@ -1307,15 +1308,26 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Storage">
-            <EntityTypeMapping TypeName="MarketplaceModel.Storage">
+            <EntityTypeMapping TypeName="MplaceModel.Storage">
               <MappingFragment StoreEntitySet="Storage">
                 <ScalarProperty Name="idStorage" ColumnName="idStorage" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Supply">
+            <EntityTypeMapping TypeName="MplaceModel.Supply">
+              <MappingFragment StoreEntitySet="Supply">
+                <ScalarProperty Name="idSupply" ColumnName="idSupply" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="idStorage" ColumnName="idStorage" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="Accepted" ColumnName="Accepted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Supply_Product">
-            <EntityTypeMapping TypeName="MarketplaceModel.Supply_Product">
+            <EntityTypeMapping TypeName="MplaceModel.Supply_Product">
               <MappingFragment StoreEntitySet="Supply_Product">
                 <ScalarProperty Name="idSupply_Product" ColumnName="idSupply_Product" />
                 <ScalarProperty Name="idSupply" ColumnName="idSupply" />
@@ -1324,7 +1336,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="MarketplaceModel.sysdiagrams">
+            <EntityTypeMapping TypeName="MplaceModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -1335,7 +1347,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="User">
-            <EntityTypeMapping TypeName="MarketplaceModel.User">
+            <EntityTypeMapping TypeName="MplaceModel.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="idUser" ColumnName="idUser" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1347,20 +1359,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище MarketplaceModel.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище MarketplaceModel.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище MarketplaceModel.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище MarketplaceModel.sp_helpdiagramdefinition">
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище MplaceModel.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище MplaceModel.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище MplaceModel.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище MplaceModel.sp_helpdiagramdefinition">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="MarketplaceModel.sp_helpdiagramdefinition_Result">
+              <ComplexTypeMapping TypeName="MplaceModel.sp_helpdiagramdefinition_Result">
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище MarketplaceModel.sp_helpdiagrams">
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище MplaceModel.sp_helpdiagrams">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="MarketplaceModel.sp_helpdiagrams_Result">
+              <ComplexTypeMapping TypeName="MplaceModel.sp_helpdiagrams_Result">
                 <ScalarProperty Name="Database" ColumnName="Database" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -1369,19 +1381,8 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище MarketplaceModel.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище MarketplaceModel.sp_upgraddiagrams" />
-          <EntitySetMapping Name="Supply">
-            <EntityTypeMapping TypeName="MarketplaceModel.Supply">
-              <MappingFragment StoreEntitySet="Supply">
-                <ScalarProperty Name="Accepted" ColumnName="Accepted" />
-                <ScalarProperty Name="idUser" ColumnName="idUser" />
-                <ScalarProperty Name="idStorage" ColumnName="idStorage" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="idSupply" ColumnName="idSupply" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище MplaceModel.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище MplaceModel.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

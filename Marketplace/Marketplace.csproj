@@ -141,6 +141,15 @@
     <Compile Include="DB\User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Admin pages\AdminMainPage.xaml.cs">
+      <DependentUpon>AdminMainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin pages\AdminRequestsWindow.xaml.cs">
+      <DependentUpon>AdminRequestsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin pages\AdminSuppliesPage.xaml.cs">
+      <DependentUpon>AdminSuppliesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\General pages\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -169,6 +178,18 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\Admin pages\AdminMainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin pages\AdminRequestsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin pages\AdminSuppliesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\General pages\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -213,6 +234,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Seller pages\RequestsSellerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Seller pages\SellerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -235,6 +260,9 @@
     </Compile>
     <Compile Include="Pages\Seller pages\MakeSupplyPage.xaml.cs">
       <DependentUpon>MakeSupplyPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Seller pages\RequestsSellerPage.xaml.cs">
+      <DependentUpon>RequestsSellerPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Seller pages\SellerPage.xaml.cs">
       <DependentUpon>SellerPage.xaml</DependentUpon>

@@ -26,6 +26,7 @@ namespace Marketplace.Pages.Seller_pages
         {
             userInfo = user;
             InitializeComponent();
+            SuppliesLV.ItemsSource = App.Connection.Supply.ToList().Where(x => x.idUser == user.idUser).ToList();
         }
         private void NameMouseDown(object sender, MouseButtonEventArgs e)
         {

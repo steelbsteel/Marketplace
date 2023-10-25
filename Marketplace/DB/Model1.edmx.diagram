@@ -4,47 +4,47 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2e9299c7439f4895aee48eef6f169479" Name="Diagram1" ZoomLevel="94">
-        <EntityTypeShape EntityType="MarketplaceModel.Authorization" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MarketplaceModel.Basket" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MarketplaceModel.BasketProduct" Width="1.5" PointX="7.5" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MarketplaceModel.Like" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MarketplaceModel.Product" Width="1.5" PointX="5.25" PointY="13.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MarketplaceModel.Product_Storage" Width="1.5" PointX="7.5" PointY="14.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MarketplaceModel.ProductAddRequest" Width="1.5" PointX="10.5" PointY="12.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MarketplaceModel.ProductAddRequestStatus" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="MarketplaceModel.ProductBirthRate" Width="1.5" PointX="3" PointY="14.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MarketplaceModel.ProductCategory" Width="1.5" PointX="3" PointY="16.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="MarketplaceModel.Role" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MarketplaceModel.Sell" Width="1.5" PointX="7.5" PointY="20.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MarketplaceModel.Sell_User" Width="1.5" PointX="9.75" PointY="16" IsExpanded="true" />
-        <EntityTypeShape EntityType="MarketplaceModel.Storage" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MarketplaceModel.Supply_Product" Width="1.5" PointX="10.5" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MarketplaceModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MarketplaceModel.User" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
-        <AssociationConnector Association="MarketplaceModel.FK_User_Authorization" ManuallyRouted="false" />
-        <AssociationConnector Association="MarketplaceModel.FK_Basket_User" ManuallyRouted="false" />
-        <AssociationConnector Association="MarketplaceModel.FK_BasketProduct_Basket" ManuallyRouted="false" />
-        <AssociationConnector Association="MarketplaceModel.FK_BasketProduct_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="MarketplaceModel.FK_Like_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="MarketplaceModel.FK_Like_User" ManuallyRouted="false" />
-        <AssociationConnector Association="MarketplaceModel.FK_Product_ProductBirthRate" ManuallyRouted="false" />
-        <AssociationConnector Association="MarketplaceModel.FK_Product_ProductCategory" ManuallyRouted="false" />
-        <AssociationConnector Association="MarketplaceModel.FK_Product_Storage_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="MarketplaceModel.FK_Product_User" ManuallyRouted="false" />
-        <AssociationConnector Association="MarketplaceModel.FK_ProductAddRequest_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="MarketplaceModel.FK_Sell_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="MarketplaceModel.FK_Supply_Product_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="MarketplaceModel.FK_Product_Storage_Storage" ManuallyRouted="false" />
-        <AssociationConnector Association="MarketplaceModel.FK_ProductAddRequest_ProductAddRequestStatus" ManuallyRouted="false" />
-        <AssociationConnector Association="MarketplaceModel.FK_ProductAddRequest_User" ManuallyRouted="false" />
-        <AssociationConnector Association="MarketplaceModel.FK_User_Role" ManuallyRouted="false" />
-        <AssociationConnector Association="MarketplaceModel.FK_Sell_User_Sell" ManuallyRouted="false" />
-        <AssociationConnector Association="MarketplaceModel.FK_Sell_User_User" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="MarketplaceModel.Supply" Width="1.5" PointX="11.25" PointY="5.75" />
-        <AssociationConnector Association="MarketplaceModel.FK_Supply_Storage" />
-        <AssociationConnector Association="MarketplaceModel.FK_Supply_Product_Supply" />
-        <AssociationConnector Association="MarketplaceModel.FK_Supply_User" />
+      <Diagram DiagramId="84a9b12742e34129bf0b630c520222a7" Name="Diagram1">
+        <EntityTypeShape EntityType="MplaceModel.Authorization" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MplaceModel.Basket" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MplaceModel.BasketProduct" Width="1.5" PointX="7.5" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MplaceModel.Like" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MplaceModel.Product" Width="1.5" PointX="5.25" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MplaceModel.Product_Storage" Width="1.5" PointX="7.5" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MplaceModel.ProductAddRequest" Width="1.5" PointX="10.5" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MplaceModel.ProductAddRequestStatus" Width="1.5" PointX="8.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="MplaceModel.ProductBirthRate" Width="1.5" PointX="3" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MplaceModel.ProductCategory" Width="1.5" PointX="3" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="MplaceModel.Role" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MplaceModel.Sell" Width="1.5" PointX="7.5" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MplaceModel.Sell_User" Width="1.5" PointX="9.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MplaceModel.Storage" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MplaceModel.Supply" Width="1.5" PointX="8.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MplaceModel.Supply_Product" Width="1.5" PointX="10.5" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MplaceModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MplaceModel.User" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="MplaceModel.FK_User_Authorization" ManuallyRouted="false" />
+        <AssociationConnector Association="MplaceModel.FK_Basket_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MplaceModel.FK_BasketProduct_Basket" ManuallyRouted="false" />
+        <AssociationConnector Association="MplaceModel.FK_BasketProduct_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="MplaceModel.FK_Like_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="MplaceModel.FK_Like_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MplaceModel.FK_Product_ProductBirthRate" ManuallyRouted="false" />
+        <AssociationConnector Association="MplaceModel.FK_Product_ProductCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="MplaceModel.FK_Product_Storage_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="MplaceModel.FK_Product_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MplaceModel.FK_ProductAddRequest_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="MplaceModel.FK_Sell_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="MplaceModel.FK_Supply_Product_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="MplaceModel.FK_Product_Storage_Storage" ManuallyRouted="false" />
+        <AssociationConnector Association="MplaceModel.FK_ProductAddRequest_ProductAddRequestStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="MplaceModel.FK_ProductAddRequest_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MplaceModel.FK_User_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="MplaceModel.FK_Sell_User_Sell" ManuallyRouted="false" />
+        <AssociationConnector Association="MplaceModel.FK_Sell_User_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MplaceModel.FK_Supply_Storage" ManuallyRouted="false" />
+        <AssociationConnector Association="MplaceModel.FK_Supply_Product_Supply" ManuallyRouted="false" />
+        <AssociationConnector Association="MplaceModel.FK_Supply_User" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

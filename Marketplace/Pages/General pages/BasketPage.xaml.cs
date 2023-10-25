@@ -26,14 +26,21 @@ namespace Marketplace.Pages
         public BasketPage(User user)
         {
             userInfo = user;
-            List <Product> products = DBMethods.GetAllBasketProduct(user);
+            InitializeComponent();
+            List<Product> products = DBMethods.GetAllBasketProduct(user);
             if (products.Count > 0)
             {
+                NoProductsInBasketLabel.Visibility = Visibility.Hidden;
                 ProductList.ItemsSource = products;
             }
-            InitializeComponent();
+            else
+            {
+                ProductList.Visibility = Visibility.Hidden;
+                NoProductsInBasketLabel.Visibility = Visibility.Visible;
+
+            }
         }
-        private void NameLabelMouseDown(object sender, MouseButtonEventArgs e)
+            private void NameLabelMouseDown(object sender, MouseButtonEventArgs e)
         {
             if (userInfo.idRole == 1)
             {
@@ -90,13 +97,14 @@ namespace Marketplace.Pages
 
                 if (bProduct.Count < DBMethods.GetCountOfProductInStorage(product))
                 {
-                    MessageBox.Show("Товара недостаточно на складе. Удалите его из корзины и попробуйте добавить снова.", "Внимание", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Товара недостаточно на складе. Удалите его из корзины и попробуйте добавить снова когда он появится в разделах маркетплейса.", "Внимание", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
                 userInfo.Balance -= totalPrice;
                 App.Connection.User.AddOrUpdate(userInfo);
                 App.Connection.BasketProduct.Remove(bProduct);
+                App.Connection.Product_Storage.Remove(App.Connection.Product_Storage.First(x => x.idProduct == product.idProduct));
                 App.Connection.SaveChanges();
                 MessageBox.Show("Вы успешно купили товар", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                 NavigationService.Navigate(new BasketPage(userInfo));

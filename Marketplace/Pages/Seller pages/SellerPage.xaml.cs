@@ -79,5 +79,15 @@ namespace Marketplace.Pages
         {
             NavigationService.Navigate(new MakeSupplyPage(userInfo));
         }
+
+        private void ListOfSuppliesBtnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new SuppliesListPage(userInfo)); 
+        }
+
+        private void GoToRequestsPageBtnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RequestsSellerPage(userInfo));
+        }
     }
 }

@@ -48,3 +48,55 @@ C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\Seller pages\
 C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\Seller pages\MakeSupplyPage.baml
 C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\Seller pages\SuppliesListPage.g.cs
 C:\Users\user\source\repos\Marketplace\Marketplace\obj\Debug\Pages\Seller pages\SuppliesListPage.baml
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\bin\Debug\Marketplace.exe.config
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\bin\Debug\Marketplace.exe
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\bin\Debug\Marketplace.pdb
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\bin\Debug\EntityFramework.dll
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\bin\Debug\EntityFramework.xml
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Marketplace.csproj.AssemblyReference.cache
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Marketplace.csproj.SuggestedBindingRedirects.cache
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\MainWindow.g.cs
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\AddProductToBasketWindow.g.cs
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\AuthorizationPage.g.cs
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\BasketPage.g.cs
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\LikesPage.g.cs
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\MarketplacePage.g.cs
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\Customer pages\ProfilePage.g.cs
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\RegistrationPage.g.cs
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\ReplinishBalanceWindow.g.cs
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\Seller pages\CreateNewProductPage.g.cs
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\Seller pages\MakeSupplyPage.g.cs
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\Seller pages\SellerPage.g.cs
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\Seller pages\SellsPage.g.cs
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\Seller pages\SuppliesListPage.g.cs
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\App.g.cs
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Marketplace_Content.g.cs
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Marketplace_MarkupCompile.cache
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Marketplace_MarkupCompile.lref
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\App.baml
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\MainWindow.baml
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\AddProductToBasketWindow.baml
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\AuthorizationPage.baml
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\BasketPage.baml
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\LikesPage.baml
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\MarketplacePage.baml
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\Customer pages\ProfilePage.baml
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\RegistrationPage.baml
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\General pages\ReplinishBalanceWindow.baml
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\Seller pages\CreateNewProductPage.baml
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\Seller pages\MakeSupplyPage.baml
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\Seller pages\SellerPage.baml
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\Seller pages\SellsPage.baml
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\Seller pages\SuppliesListPage.baml
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Marketplace.g.resources
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Marketplace.Properties.Resources.resources
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Marketplace.csproj.GenerateResource.cache
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Marketplace.csproj.CoreCompileInputs.cache
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Marketplace.csproj.CopyComplete
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Marketplace.exe
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Marketplace.pdb
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\Seller pages\RequestsSellerPage.g.cs
+C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\Pages\Seller pages\RequestsSellerPage.baml
