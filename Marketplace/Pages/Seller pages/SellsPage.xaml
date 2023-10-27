@@ -34,11 +34,22 @@
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Margin="10">
-                            <Image Source="{Binding Image}" Height="300" Width="300"></Image>
-                            <Label Content="{Binding Title}" VerticalAlignment="Center" Foreground="#FEF9EF" Margin="20 0 0 0"></Label>
-                            <Label Content="{Binding Date}" VerticalAlignment="Center" Foreground="#FEF9EF" Margin="50 0 0 0"></Label>
-                            <Label Content="+" VerticalAlignment="Center" Margin="500 0 0 0" Foreground="#FF61F118" ></Label>
-                            <Label Content="{Binding Sallary}" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#FF61F118" Margin="0 0 0 0"></Label>
+                            <Image VerticalAlignment="Center" Source="{Binding Product.Image}" Height="300" Width="300"></Image>
+                            <StackPanel Orientation="Vertical" Width="300" VerticalAlignment="Center">
+                                <Label HorizontalAlignment="Center"  Content="Название товара" VerticalAlignment="Center" Foreground="#FEF9EF" Margin="20 0 0 0"></Label>
+                                <Label HorizontalAlignment="Center" Content="{Binding Product.Title}" VerticalAlignment="Center" Foreground="#FEF9EF" Margin="20 0 0 0"></Label>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Width="250" VerticalAlignment="Center">
+                                <Label HorizontalAlignment="Center"  Content="Дата" VerticalAlignment="Center" Foreground="#FEF9EF" Margin="20 0 0 0"></Label>
+                                <Label HorizontalAlignment="Center"  Content="{Binding Date}" VerticalAlignment="Center" Foreground="#FEF9EF" Margin="50 0 0 0"></Label>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Width="250" VerticalAlignment="Center">
+                                <Label HorizontalAlignment="Center"  Content="Выручка" VerticalAlignment="Center" Foreground="#FEF9EF" Margin="10 0 0 0"></Label>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  VerticalAlignment="Center">
+                                    <Label HorizontalAlignment="Center"  Content="+" VerticalAlignment="Center" Foreground="#FEF9EF" Margin="10 0 0 0"></Label>
+                                    <Label HorizontalAlignment="Center"  Content="{Binding Sallary}" VerticalAlignment="Center" Foreground="Green" Margin="10 0 0 0"></Label>
+                                </StackPanel>
+                            </StackPanel>
                         </StackPanel>
                         <Separator Width="1280" Background="White" />
                     </StackPanel>

@@ -25,7 +25,7 @@
         </StackPanel>
         <StackPanel Grid.Row="1" VerticalAlignment="Center">
             <Button Content="Просмотреть заявки на добавление товара" Margin="10" Width="750" Click="GoToRequestsBtnClick"></Button>
-            <Button Content="Просмотреть поставки" Margin="10 40 0 0" Width="750"></Button>
+            <Button Content="Просмотреть поставки" Margin="10 40 0 0" Width="750" Click="Button_Click"></Button>
         </StackPanel>
     </Grid>
 </Page>

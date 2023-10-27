@@ -22,7 +22,7 @@ namespace Marketplace.DB
             this.Product_Storage = new HashSet<Product_Storage>();
             this.ProductAddRequest = new HashSet<ProductAddRequest>();
             this.Sell = new HashSet<Sell>();
-            this.Supply_Product = new HashSet<Supply_Product>();
+            this.Supply = new HashSet<Supply>();
         }
     
         public int idProduct { get; set; }
@@ -49,6 +49,6 @@ namespace Marketplace.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sell> Sell { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Supply_Product> Supply_Product { get; set; }
+        public virtual ICollection<Supply> Supply { get; set; }
     }
 }

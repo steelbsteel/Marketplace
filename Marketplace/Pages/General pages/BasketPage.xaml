@@ -37,17 +37,17 @@
                             </StackPanel.Effect>
                             <StackPanel Orientation="Horizontal" Margin="10">
                                 <Border BorderBrush="Black" BorderThickness="3">
-                                    <Image Source="{Binding Image}" Height="300" Width="300"/>
+                                    <Image Source="{Binding Product.Image}" Height="300" Width="300"/>
                                 </Border>
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="30 0 0 0">
                                     <Button Click="DeleteProductFromBasketBtnClick" Tag="{Binding idBasketProduct}" Content="X" Foreground="Red" VerticalAlignment="Top" HorizontalAlignment="Right"></Button>
                                     <StackPanel Orientation="Horizontal">
                                         <Label Foreground="#FEF9EF" Content="Название товара: "></Label>
-                                        <Label Foreground="#FEF9EF" Content="{Binding Title}"/>
+                                        <Label Foreground="#FEF9EF" Content="{Binding Product.Title}"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <Label Foreground="#FEF9EF" Content="Цена товара за еденицу: "></Label>
-                                        <Label Foreground="#FEF9EF" Content="{Binding Cost}"/>
+                                        <Label Foreground="#FEF9EF" Content="{Binding Product.Cost}"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <Label Foreground="#FEF9EF" Content="Количество: "></Label>

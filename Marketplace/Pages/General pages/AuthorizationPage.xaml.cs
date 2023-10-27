@@ -1,4 +1,5 @@
 ﻿using Marketplace.DB;
+using Marketplace.Pages.Admin_pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,14 @@ namespace Marketplace.Pages
             {
                 auth = App.Connection.Authorization.First(x => x.Login == LoginTB.Text && x.Password == PasswordTB.Password);
                 User user = DBMethods.GetUserByAuthorization(auth);
-                NavigationService.Navigate(new MarketplacePage(user));
+                if(user.idRole == 3)
+                {
+                    NavigationService.Navigate(new AdminMainPage(user));
+                }
+                else
+                {
+                    NavigationService.Navigate(new MarketplacePage(user));
+                }
             }
             catch 
             {

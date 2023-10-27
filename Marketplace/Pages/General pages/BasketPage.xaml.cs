@@ -27,7 +27,8 @@ namespace Marketplace.Pages
         {
             userInfo = user;
             InitializeComponent();
-            List<Product> products = DBMethods.GetAllBasketProduct(user);
+            //List<BasketProduct> products = DBMethods.GetAllBasketProduct(user);
+            List<BasketProduct> products = App.Connection.BasketProduct.ToList().Where(x => x.idBasket == App.Connection.Basket.First(y => y.idUser == userInfo.idUser).idBasket).ToList();
             if (products.Count > 0)
             {
                 NoProductsInBasketLabel.Visibility = Visibility.Hidden;
@@ -65,7 +66,7 @@ namespace Marketplace.Pages
         private void DeleteProductFromBasketBtnClick(object sender, RoutedEventArgs e)
         {
             var id = (int)((Button)sender).Tag;
-            BasketProduct bProduct = App.Connection.BasketProduct.First(x => x.idProduct == id);
+            BasketProduct bProduct = App.Connection.BasketProduct.First(x => x.idBasketProduct == id);
             MessageBoxResult mbox = MessageBox.Show("Вы уверены что хотите удалить товар из корзины?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (mbox == MessageBoxResult.Yes)
@@ -73,7 +74,7 @@ namespace Marketplace.Pages
                 App.Connection.BasketProduct.Remove(bProduct);
                 App.Connection.SaveChanges();
                 MessageBox.Show("Товар успешно удален из корзины", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-                NavigationService.Navigate(new BasketPage(userInfo));
+                NavigationService.Navigate(new MarketplacePage(userInfo));
             }
         }
 
@@ -81,8 +82,7 @@ namespace Marketplace.Pages
         {
 
             var id = (int)((Button)sender).Tag;
-            Product product = App.Connection.Product.First(x => x.idProduct == id);
-            BasketProduct bProduct = App.Connection.BasketProduct.First(x => x.idProduct == id);
+            BasketProduct bProduct = App.Connection.BasketProduct.First(x => x.idBasketProduct == id);
             int totalPrice = DBMethods.GetTotalPriceOfProduct(bProduct);
             MessageBoxResult mbox = MessageBox.Show($"Вы уверены что хотите купить данный товар? Итоговая цена составит: {totalPrice}", 
                 "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -95,7 +95,7 @@ namespace Marketplace.Pages
                     return;
                 }
 
-                if (bProduct.Count < DBMethods.GetCountOfProductInStorage(product))
+                if (bProduct.Count < DBMethods.GetCountOfProductInStorage(App.Connection.Product.FirstOrDefault(x => x.idProduct == bProduct.idProduct)))
                 {
                     MessageBox.Show("Товара недостаточно на складе. Удалите его из корзины и попробуйте добавить снова когда он появится в разделах маркетплейса.", "Внимание", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
@@ -104,10 +104,22 @@ namespace Marketplace.Pages
                 userInfo.Balance -= totalPrice;
                 App.Connection.User.AddOrUpdate(userInfo);
                 App.Connection.BasketProduct.Remove(bProduct);
-                App.Connection.Product_Storage.Remove(App.Connection.Product_Storage.First(x => x.idProduct == product.idProduct));
+                Sell sell = new Sell();
+                sell.idProduct = bProduct.idProduct;
+                sell.Sallary = bProduct.Count * App.Connection.Product.FirstOrDefault(x => x.idProduct == bProduct.idProduct).Cost;
+                sell.Date = DateTime.Now.Date;
+                sell.DateDelivery = DateTime.UtcNow.AddDays(2);
+                Product_Storage product_Storage = App.Connection.Product_Storage.First(x => x.idProduct == App.Connection.Product.FirstOrDefault(y => y.idProduct == bProduct.idProduct).idProduct);
+                product_Storage.CountOfProducts -= bProduct.Count;
+                App.Connection.Product_Storage.AddOrUpdate(product_Storage);
+                sell.idUser = userInfo.idUser;
+                App.Connection.Sell.Add(sell);
+                User seller = App.Connection.User.FirstOrDefault(x => x.idUser == App.Connection.Product.FirstOrDefault(y => y.idProduct == bProduct.idProduct).idUser);
+                seller.Balance +=  bProduct.Count * App.Connection.Product.FirstOrDefault(x => x.idProduct == bProduct.idProduct).Cost;
+                App.Connection.User.AddOrUpdate(seller);
                 App.Connection.SaveChanges();
                 MessageBox.Show("Вы успешно купили товар", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-                NavigationService.Navigate(new BasketPage(userInfo));
+                NavigationService.Navigate(new MarketplacePage(userInfo));
             }
         }
 

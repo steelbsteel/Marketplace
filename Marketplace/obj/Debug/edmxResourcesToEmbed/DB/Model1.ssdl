@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Хранилище MplaceModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="Хранилище MarketplaceModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Authorization">
     <Key>
       <PropertyRef Name="idAuthorization" />
@@ -53,6 +53,7 @@
     <Property Name="idProduct_Storage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="idProduct" Type="int" Nullable="false" />
     <Property Name="idStorage" Type="int" Nullable="false" />
+    <Property Name="CountOfProducts" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductAddRequest">
     <Key>
@@ -95,18 +96,12 @@
     <Key>
       <PropertyRef Name="idSell" />
     </Key>
-    <Property Name="idSell" Type="int" Nullable="false" />
+    <Property Name="idSell" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="idProduct" Type="int" Nullable="false" />
     <Property Name="Sallary" Type="int" Nullable="false" />
     <Property Name="Date" Type="date" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Sell_User">
-    <Key>
-      <PropertyRef Name="idSell_User" />
-    </Key>
-    <Property Name="idSell_User" Type="int" Nullable="false" />
     <Property Name="idUser" Type="int" Nullable="false" />
-    <Property Name="idSell" Type="int" Nullable="false" />
+    <Property Name="DateDelivery" Type="date" Nullable="false" />
   </EntityType>
   <EntityType Name="Storage">
     <Key>
@@ -123,7 +118,9 @@
     <Property Name="Date" Type="date" Nullable="false" />
     <Property Name="idStorage" Type="int" Nullable="false" />
     <Property Name="idUser" Type="int" Nullable="false" />
-    <Property Name="Accepted" Type="bit" Nullable="false" />
+    <Property Name="Accepted" Type="bit" />
+    <Property Name="CountOfProducts" Type="int" Nullable="false" />
+    <Property Name="idProduct" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Supply_Product">
     <Key>
@@ -323,38 +320,26 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Sell_User_Sell">
-    <End Role="Sell" Type="Self.Sell" Multiplicity="1" />
-    <End Role="Sell_User" Type="Self.Sell_User" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Sell">
-        <PropertyRef Name="idSell" />
-      </Principal>
-      <Dependent Role="Sell_User">
-        <PropertyRef Name="idSell" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Sell_User_User">
+  <Association Name="FK_Sell_User">
     <End Role="User" Type="Self.User" Multiplicity="1" />
-    <End Role="Sell_User" Type="Self.Sell_User" Multiplicity="*" />
+    <End Role="Sell" Type="Self.Sell" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="User">
         <PropertyRef Name="idUser" />
       </Principal>
-      <Dependent Role="Sell_User">
+      <Dependent Role="Sell">
         <PropertyRef Name="idUser" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Supply_Product_Product">
+  <Association Name="FK_Supply_Product">
     <End Role="Product" Type="Self.Product" Multiplicity="1" />
-    <End Role="Supply_Product" Type="Self.Supply_Product" Multiplicity="*" />
+    <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Product">
         <PropertyRef Name="idProduct" />
       </Principal>
-      <Dependent Role="Supply_Product">
+      <Dependent Role="Supply">
         <PropertyRef Name="idProduct" />
       </Dependent>
     </ReferentialConstraint>
@@ -450,7 +435,7 @@
     <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <EntityContainer Name="Хранилище MplaceModelContainer">
+  <EntityContainer Name="Хранилище MarketplaceModelContainer">
     <EntitySet Name="Authorization" EntityType="Self.Authorization" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Basket" EntityType="Self.Basket" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BasketProduct" EntityType="Self.BasketProduct" Schema="dbo" store:Type="Tables" />
@@ -463,7 +448,6 @@
     <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Sell" EntityType="Self.Sell" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Sell_User" EntityType="Self.Sell_User" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Storage" EntityType="Self.Storage" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Supply" EntityType="Self.Supply" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Supply_Product" EntityType="Self.Supply_Product" Schema="dbo" store:Type="Tables" />
@@ -525,17 +509,13 @@
       <End Role="Product" EntitySet="Product" />
       <End Role="Sell" EntitySet="Sell" />
     </AssociationSet>
-    <AssociationSet Name="FK_Sell_User_Sell" Association="Self.FK_Sell_User_Sell">
-      <End Role="Sell" EntitySet="Sell" />
-      <End Role="Sell_User" EntitySet="Sell_User" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Sell_User_User" Association="Self.FK_Sell_User_User">
+    <AssociationSet Name="FK_Sell_User" Association="Self.FK_Sell_User">
       <End Role="User" EntitySet="User" />
-      <End Role="Sell_User" EntitySet="Sell_User" />
+      <End Role="Sell" EntitySet="Sell" />
     </AssociationSet>
-    <AssociationSet Name="FK_Supply_Product_Product" Association="Self.FK_Supply_Product_Product">
+    <AssociationSet Name="FK_Supply_Product" Association="Self.FK_Supply_Product">
       <End Role="Product" EntitySet="Product" />
-      <End Role="Supply_Product" EntitySet="Supply_Product" />
+      <End Role="Supply" EntitySet="Supply" />
     </AssociationSet>
     <AssociationSet Name="FK_Supply_Product_Supply" Association="Self.FK_Supply_Product_Supply">
       <End Role="Supply" EntitySet="Supply" />

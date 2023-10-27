@@ -78,18 +78,13 @@ namespace Marketplace
                 return products;
             }
         }
-        public static List<Product> GetAllLikes(User user)
+        public static List<Like> GetAllLikes(User user)
         {
-            List<Product> products = new List<Product>();
+            List<Like> products = new List<Like>();
             try
             {
                 List<Like> Likes = App.Connection.Like.ToList().Where(x => x.idUser == user.idUser).ToList();
-                foreach (Like like in Likes)
-                {
-                    Product product = App.Connection.Product.First(x => x.idProduct == like.idProduct);
-                    products.Add(product);
-                }
-                return products;
+                return Likes;
             }
             catch
             {
@@ -119,6 +114,22 @@ namespace Marketplace
             {
                 list.Add(App.Connection.Product.First(x => x.idProduct == product.idProduct));
             }
+
+            return list;
+        }
+        public static List<Product> GetProductsReadyToSell(int idCategory)
+        {
+            List<Product> list = new List<Product>();
+            List<Product_Storage> productsInStorage = App.Connection.Product_Storage.Distinct().ToList();
+            foreach (Product_Storage product in productsInStorage)
+            {
+                Product prTemp = App.Connection.Product.FirstOrDefault(x => x.idProduct == product.idProduct && x.idProductCategory == idCategory);
+                if (prTemp != null)
+                {
+                    list.Add(prTemp);
+
+                }
+            }
             return list;
         }
 
@@ -144,32 +155,6 @@ namespace Marketplace
             image.Freeze();
             return image;
         }
-        public static List<ProductSell> GetSells(int idSeller)
-        {
-            List<Product> sellersProducts = App.Connection.Product.ToList().Where(x => x.idUser == idSeller).ToList();
-            List<Sell> sells = App.Connection.Sell.ToList();
-            List<ProductSell> productsSelled = new List<ProductSell>();
-            
-            foreach(Sell sell in sells)
-            {
-                 foreach (Product product in sellersProducts) 
-                 {
-                    if (sell.idProduct != product.idProduct)
-                    {
-                        sells.Remove(sell);
-                    }
-                 }
-            }
-
-            foreach (Sell sell in sells)
-            {
-                Product product = App.Connection.Product.First(x => x.idProduct == sell.idProduct);
-                ProductSell productSell = new ProductSell(product.Title, sell.Date, sell.Sallary.ToString(), ByteToImage(product.Image));
-                productsSelled.Add(productSell);
-            }
-
-            return productsSelled;
-        }
 
         public static bool CheckAgePass(DateTime birthDate, DateTime now, int rate)
         {
@@ -184,9 +169,17 @@ namespace Marketplace
                 return false;
         }
 
-        public static List<Supply_Product> GetAllSupplies()
+        public static List<Supply_Product> DeleteDuplicatesFromList(List<Supply_Product> supply)
         {
-
+            for (int i = 0; i < supply.Count - 1; i++)
+            {
+                for (int x = 0; x < supply.Count; x++)
+                {
+                    if (supply[x].idProduct == supply[i].idProduct)
+                        supply.Remove(supply[x]);
+                } 
+            }
+            return supply;
         }
     }
 }

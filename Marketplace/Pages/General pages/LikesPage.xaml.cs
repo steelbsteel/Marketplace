@@ -27,10 +27,10 @@ namespace Marketplace.Pages
         {
             userInfo = user;
             InitializeComponent();
-            List<Product> products = DBMethods.GetAllBasketProduct(user);
-            if (products.Count > 0)
+            List<Like> likes = DBMethods.GetAllLikes(user);
+            if (likes.Count > 0)
             {
-                ProductList.ItemsSource = products;
+                ProductList.ItemsSource = likes;
                 NoProductsInLikesLabel.Visibility = Visibility.Hidden;
             }
             else
@@ -77,6 +77,21 @@ namespace Marketplace.Pages
         private void PageLoaded(object sender, RoutedEventArgs e)
         {
             this.DataContext = userInfo;
+        }
+
+        private void DeleteProductFromBasketBtnClick(object sender, RoutedEventArgs e)
+        {
+            var id = (int)((Button)sender).Tag;
+            Like like = App.Connection.Like.First(x => x.idLike == id);
+            MessageBoxResult mbox = MessageBox.Show("Вы уверены что хотите удалить товар из понравившихся?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (mbox == MessageBoxResult.Yes)
+            {
+                App.Connection.Like.Remove(like);
+                App.Connection.SaveChanges();
+                MessageBox.Show("Товар успешно удален из понравившихся", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                NavigationService.Navigate(new MarketplacePage(userInfo));
+            }
         }
     }
 }

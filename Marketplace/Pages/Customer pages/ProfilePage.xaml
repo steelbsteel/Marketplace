@@ -41,6 +41,7 @@
             <Button Content="Пополнить баланс" Margin="15" Width="600" Click="ReplinishBalanceBtnClick"/>
             <Button Content="Просмотреть понравившиеся" Margin="15" Width="600" Click="GoToLikesBtnClick"/>
             <Button Content="Просмотреть корзину" Margin="15" Width="600" Click="GoToBasketBtnClick"/>
+            <Button Content="Просмотреть покупки" Margin="15" Width="600" Click="PurchasesBtnClick"/>
         </StackPanel>
     </Grid>
 </Page>

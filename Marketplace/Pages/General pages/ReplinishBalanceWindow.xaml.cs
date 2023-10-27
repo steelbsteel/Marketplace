@@ -35,11 +35,13 @@ namespace Marketplace.Pages
 
         private void ReplinishBtnClick(object sender, RoutedEventArgs e)
         {
+
             if (string.IsNullOrEmpty(SumTB.Text) || Convert.ToInt32(SumTB.Text) <= 0)
             {
                 MessageBox.Show("Исправьте значения поля суммы", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+
             try
             {
                 userInfo.Balance +=  Convert.ToInt32(SumTB.Text);

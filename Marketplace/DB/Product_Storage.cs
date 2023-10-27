@@ -17,6 +17,7 @@ namespace Marketplace.DB
         public int idProduct_Storage { get; set; }
         public int idProduct { get; set; }
         public int idStorage { get; set; }
+        public int CountOfProducts { get; set; }
     
         public virtual Product Product { get; set; }
         public virtual Storage Storage { get; set; }

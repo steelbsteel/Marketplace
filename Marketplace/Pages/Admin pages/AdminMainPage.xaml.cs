@@ -37,5 +37,10 @@ namespace Marketplace.Pages.Admin_pages
         {
             NavigationService.Navigate(new AdminRequestsWindow(userInfo));
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AdminSuppliesPage(userInfo));
+        }
     }
 }

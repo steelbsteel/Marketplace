@@ -26,15 +26,28 @@ namespace Marketplace.Pages.Seller_pages
         {
             userInfo = user;
             InitializeComponent();
-            List<ProductSell> list = DBMethods.GetSells(userInfo.idUser);
-            if (list.Count == 0)
+            List<Sell> sells = App.Connection.Sell.ToList();
+            List<Product> products = App.Connection.Product.ToList().Where(x => x.idUser == userInfo.idUser).ToList();
+            List<Sell> userSells = new List<Sell>();
+            foreach(Product product in products)
+            {
+                foreach(Sell sell in sells)
+                {
+                    if(sell.idProduct == product.idProduct)
+                    { 
+                        userSells.Add(sell); 
+                    }
+                }
+            }
+
+            if (userSells.Count == 0)
             {
                 ProductsSelledLV.Visibility = Visibility.Hidden;
                 NoSellsText.Visibility = Visibility.Visible;
             }
             else
             {
-                ProductsSelledLV.ItemsSource = DBMethods.GetSells(userInfo.idUser);
+                ProductsSelledLV.ItemsSource = userSells;
             }
         }
         private void NameMouseDown(object sender, MouseButtonEventArgs e)

@@ -37,6 +37,7 @@ namespace Marketplace.Pages
             Authorization auth = new Authorization();
 
 
+
             if (string.IsNullOrEmpty(PasswordPB.Password) || string.IsNullOrEmpty(LoginTB.Text) ||
                 string.IsNullOrEmpty(RoleCB.Text) || string.IsNullOrEmpty(NameTB.Text) ||
                 string.IsNullOrEmpty(SurnameTB.Text) || string.IsNullOrEmpty(datePicker.Text))
@@ -49,10 +50,16 @@ namespace Marketplace.Pages
                     MessageBox.Show("Такой логин уже существует", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
+
                 else
                 {
                     try
                     {
+                        if ((DateTime)datePicker.SelectedDate > DateTime.Now)
+                        {
+                            MessageBox.Show("Дата рождения неккоректна", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                            return;
+                        }
                         auth.Password = PasswordPB.Password;
                         auth.Login = LoginTB.Text;
                         App.Connection.Authorization.Add(auth);
@@ -61,6 +68,7 @@ namespace Marketplace.Pages
                         user.idAuthorization = authId;
                         user.Name = NameTB.Text;
                         user.Surname = SurnameTB.Text;
+
                         user.BirthDate = (DateTime)datePicker.SelectedDate;
                         if (RoleCB.Text == "Покупатель")
                         {
@@ -79,9 +87,9 @@ namespace Marketplace.Pages
                         MessageBox.Show("Вы успешно зарегистрировались", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                         NavigationService.GoBack();
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Ошибка", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show($"{ex}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             }

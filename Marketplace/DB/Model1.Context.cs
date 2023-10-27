@@ -15,10 +15,10 @@ namespace Marketplace.DB
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class MplaceEntities : DbContext
+    public partial class MarketplaceEntities3 : DbContext
     {
-        public MplaceEntities()
-            : base("name=MplaceEntities")
+        public MarketplaceEntities3()
+            : base("name=MarketplaceEntities3")
         {
         }
     
@@ -39,7 +39,6 @@ namespace Marketplace.DB
         public virtual DbSet<ProductCategory> ProductCategory { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Sell> Sell { get; set; }
-        public virtual DbSet<Sell_User> Sell_User { get; set; }
         public virtual DbSet<Storage> Storage { get; set; }
         public virtual DbSet<Supply> Supply { get; set; }
         public virtual DbSet<Supply_Product> Supply_Product { get; set; }

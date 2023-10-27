@@ -22,12 +22,14 @@ namespace Marketplace.Pages
     {
         User userInfo;
         Product productInfo;
+        Product_Storage productInStorage;
         public AddProductToBasketWindow(User user, Product product)
         {
             userInfo = user;
             productInfo = product;
             InitializeComponent();
-            CountOfProductInStorage.Content = DBMethods.GetCountOfProductInStorage(product).ToString();
+            productInStorage = App.Connection.Product_Storage.First(x => x.idProduct == product.idProduct);
+            CountOfProductInStorage.Content = productInStorage.CountOfProducts;
         }
 
         private void CountTBTextChanged(object sender, TextChangedEventArgs e)
@@ -40,6 +42,7 @@ namespace Marketplace.Pages
             }
             else
             {
+                CountTB.Text = "";
                 MessageBox.Show("Введите целое значение поля количества.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -57,7 +60,7 @@ namespace Marketplace.Pages
                 return;
             }
 
-            if (Convert.ToInt32(CountTB.Text) > DBMethods.GetCountOfProductInStorage(productInfo))
+            if (Convert.ToInt32(CountTB.Text) > productInStorage.CountOfProducts)
             {
                 MessageBox.Show("Вы выбрали количество товара больше, чем хранится на складе", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;

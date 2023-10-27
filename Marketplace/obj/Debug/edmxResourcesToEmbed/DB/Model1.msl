@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Хранилище MplaceModelContainer" CdmEntityContainer="MplaceEntities">
+  <EntityContainerMapping StorageEntityContainer="Хранилище MarketplaceModelContainer" CdmEntityContainer="MarketplaceEntities3">
     <EntitySetMapping Name="Authorization">
-      <EntityTypeMapping TypeName="MplaceModel.Authorization">
+      <EntityTypeMapping TypeName="MarketplaceModel.Authorization">
         <MappingFragment StoreEntitySet="Authorization">
           <ScalarProperty Name="idAuthorization" ColumnName="idAuthorization" />
           <ScalarProperty Name="Login" ColumnName="Login" />
@@ -11,7 +11,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Basket">
-      <EntityTypeMapping TypeName="MplaceModel.Basket">
+      <EntityTypeMapping TypeName="MarketplaceModel.Basket">
         <MappingFragment StoreEntitySet="Basket">
           <ScalarProperty Name="idBasket" ColumnName="idBasket" />
           <ScalarProperty Name="idUser" ColumnName="idUser" />
@@ -19,7 +19,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="BasketProduct">
-      <EntityTypeMapping TypeName="MplaceModel.BasketProduct">
+      <EntityTypeMapping TypeName="MarketplaceModel.BasketProduct">
         <MappingFragment StoreEntitySet="BasketProduct">
           <ScalarProperty Name="idBasketProduct" ColumnName="idBasketProduct" />
           <ScalarProperty Name="idBasket" ColumnName="idBasket" />
@@ -29,7 +29,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Like">
-      <EntityTypeMapping TypeName="MplaceModel.Like">
+      <EntityTypeMapping TypeName="MarketplaceModel.Like">
         <MappingFragment StoreEntitySet="Like">
           <ScalarProperty Name="idLike" ColumnName="idLike" />
           <ScalarProperty Name="idUser" ColumnName="idUser" />
@@ -38,7 +38,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Product">
-      <EntityTypeMapping TypeName="MplaceModel.Product">
+      <EntityTypeMapping TypeName="MarketplaceModel.Product">
         <MappingFragment StoreEntitySet="Product">
           <ScalarProperty Name="idProduct" ColumnName="idProduct" />
           <ScalarProperty Name="Title" ColumnName="Title" />
@@ -53,16 +53,17 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Product_Storage">
-      <EntityTypeMapping TypeName="MplaceModel.Product_Storage">
+      <EntityTypeMapping TypeName="MarketplaceModel.Product_Storage">
         <MappingFragment StoreEntitySet="Product_Storage">
           <ScalarProperty Name="idProduct_Storage" ColumnName="idProduct_Storage" />
           <ScalarProperty Name="idProduct" ColumnName="idProduct" />
           <ScalarProperty Name="idStorage" ColumnName="idStorage" />
+          <ScalarProperty Name="CountOfProducts" ColumnName="CountOfProducts" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ProductAddRequest">
-      <EntityTypeMapping TypeName="MplaceModel.ProductAddRequest">
+      <EntityTypeMapping TypeName="MarketplaceModel.ProductAddRequest">
         <MappingFragment StoreEntitySet="ProductAddRequest">
           <ScalarProperty Name="idProductAddRequest" ColumnName="idProductAddRequest" />
           <ScalarProperty Name="idProduct" ColumnName="idProduct" />
@@ -72,7 +73,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ProductAddRequestStatus">
-      <EntityTypeMapping TypeName="MplaceModel.ProductAddRequestStatus">
+      <EntityTypeMapping TypeName="MarketplaceModel.ProductAddRequestStatus">
         <MappingFragment StoreEntitySet="ProductAddRequestStatus">
           <ScalarProperty Name="idProductAddRequestStatus" ColumnName="idProductAddRequestStatus" />
           <ScalarProperty Name="Status" ColumnName="Status" />
@@ -80,7 +81,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ProductBirthRate">
-      <EntityTypeMapping TypeName="MplaceModel.ProductBirthRate">
+      <EntityTypeMapping TypeName="MarketplaceModel.ProductBirthRate">
         <MappingFragment StoreEntitySet="ProductBirthRate">
           <ScalarProperty Name="idProductBirthRate" ColumnName="idProductBirthRate" />
           <ScalarProperty Name="BirthRate" ColumnName="BirthRate" />
@@ -88,7 +89,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ProductCategory">
-      <EntityTypeMapping TypeName="MplaceModel.ProductCategory">
+      <EntityTypeMapping TypeName="MarketplaceModel.ProductCategory">
         <MappingFragment StoreEntitySet="ProductCategory">
           <ScalarProperty Name="idProductCategory" ColumnName="idProductCategory" />
           <ScalarProperty Name="Title" ColumnName="Title" />
@@ -96,7 +97,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Role">
-      <EntityTypeMapping TypeName="MplaceModel.Role">
+      <EntityTypeMapping TypeName="MarketplaceModel.Role">
         <MappingFragment StoreEntitySet="Role">
           <ScalarProperty Name="idRole" ColumnName="idRole" />
           <ScalarProperty Name="Title" ColumnName="Title" />
@@ -104,26 +105,19 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Sell">
-      <EntityTypeMapping TypeName="MplaceModel.Sell">
+      <EntityTypeMapping TypeName="MarketplaceModel.Sell">
         <MappingFragment StoreEntitySet="Sell">
           <ScalarProperty Name="idSell" ColumnName="idSell" />
           <ScalarProperty Name="idProduct" ColumnName="idProduct" />
           <ScalarProperty Name="Sallary" ColumnName="Sallary" />
           <ScalarProperty Name="Date" ColumnName="Date" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Sell_User">
-      <EntityTypeMapping TypeName="MplaceModel.Sell_User">
-        <MappingFragment StoreEntitySet="Sell_User">
-          <ScalarProperty Name="idSell_User" ColumnName="idSell_User" />
           <ScalarProperty Name="idUser" ColumnName="idUser" />
-          <ScalarProperty Name="idSell" ColumnName="idSell" />
+          <ScalarProperty Name="DateDelivery" ColumnName="DateDelivery" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Storage">
-      <EntityTypeMapping TypeName="MplaceModel.Storage">
+      <EntityTypeMapping TypeName="MarketplaceModel.Storage">
         <MappingFragment StoreEntitySet="Storage">
           <ScalarProperty Name="idStorage" ColumnName="idStorage" />
           <ScalarProperty Name="Address" ColumnName="Address" />
@@ -131,18 +125,20 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Supply">
-      <EntityTypeMapping TypeName="MplaceModel.Supply">
+      <EntityTypeMapping TypeName="MarketplaceModel.Supply">
         <MappingFragment StoreEntitySet="Supply">
           <ScalarProperty Name="idSupply" ColumnName="idSupply" />
           <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="idStorage" ColumnName="idStorage" />
           <ScalarProperty Name="idUser" ColumnName="idUser" />
           <ScalarProperty Name="Accepted" ColumnName="Accepted" />
+          <ScalarProperty Name="CountOfProducts" ColumnName="CountOfProducts" />
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Supply_Product">
-      <EntityTypeMapping TypeName="MplaceModel.Supply_Product">
+      <EntityTypeMapping TypeName="MarketplaceModel.Supply_Product">
         <MappingFragment StoreEntitySet="Supply_Product">
           <ScalarProperty Name="idSupply_Product" ColumnName="idSupply_Product" />
           <ScalarProperty Name="idSupply" ColumnName="idSupply" />
@@ -151,7 +147,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="MplaceModel.sysdiagrams">
+      <EntityTypeMapping TypeName="MarketplaceModel.sysdiagrams">
         <MappingFragment StoreEntitySet="sysdiagrams">
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -162,7 +158,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="User">
-      <EntityTypeMapping TypeName="MplaceModel.User">
+      <EntityTypeMapping TypeName="MarketplaceModel.User">
         <MappingFragment StoreEntitySet="User">
           <ScalarProperty Name="idUser" ColumnName="idUser" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -174,20 +170,20 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище MplaceModel.sp_alterdiagram" />
-    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище MplaceModel.sp_creatediagram" />
-    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище MplaceModel.sp_dropdiagram" />
-    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище MplaceModel.sp_helpdiagramdefinition">
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище MarketplaceModel.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище MarketplaceModel.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище MarketplaceModel.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище MarketplaceModel.sp_helpdiagramdefinition">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="MplaceModel.sp_helpdiagramdefinition_Result">
+        <ComplexTypeMapping TypeName="MarketplaceModel.sp_helpdiagramdefinition_Result">
           <ScalarProperty Name="version" ColumnName="version" />
           <ScalarProperty Name="definition" ColumnName="definition" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище MplaceModel.sp_helpdiagrams">
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище MarketplaceModel.sp_helpdiagrams">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="MplaceModel.sp_helpdiagrams_Result">
+        <ComplexTypeMapping TypeName="MarketplaceModel.sp_helpdiagrams_Result">
           <ScalarProperty Name="Database" ColumnName="Database" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -196,7 +192,7 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище MplaceModel.sp_renamediagram" />
-    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище MplaceModel.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище MarketplaceModel.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище MarketplaceModel.sp_upgraddiagrams" />
   </EntityContainerMapping>
 </Mapping>

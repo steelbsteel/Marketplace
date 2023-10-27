@@ -28,21 +28,25 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">
-                    <StackPanel Orientation="Horizontal" Margin="10">
-                        <Image Height="150" Width="150" Source="{Binding Product.Image}"></Image>
-                        <StackPanel Orientation="Vertical" Margin="10" Width="309"  VerticalAlignment="Center">
-                            <Label Content="Название товара:" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="10 0 0 0"></Label>
-                            <Label Content="{Binding Product.Title}" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="10 0 0 0"></Label>
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <Image Height="150" Width="150" Source="{Binding Product.Image}"></Image>
+                            <StackPanel Orientation="Vertical" Margin="10" Width="250"  VerticalAlignment="Center">
+                                <Label Content="Название:" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="10 0 0 0"></Label>
+                                <Label Content="{Binding Product.Title}" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="10 0 0 0"></Label>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Margin="10" Width="309"  VerticalAlignment="Center">
+                                <Label Content="Количество:" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="10 0 0 0"></Label>
+                                <Label Content="{Binding CountOfProducts}" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="10 0 0 0"></Label>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Margin="10" Width="400"  VerticalAlignment="Center">
+                                <Label Content="Склад:" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="10 0 0 0"></Label>
+                                <Label Content="{Binding Storage.Address}" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="10 0 0 0"></Label>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Margin="20 0 0 0" Width="250" VerticalAlignment="Center">
+                                <Button Tag="{Binding idSupply}" Content="Принять" Background="#FEF9EF" Foreground="Black" Height="50" Margin="0 0 0 10" Width="200" FontSize="30" Click="AcceptSupplyButton"></Button>
+                                <Button Tag="{Binding idSupply}" Content="Отклонить" Background="#FEF9EF" Foreground="Black" Height="50" Width="200" FontSize="30" Click="RejectBtnClick"></Button>
+                            </StackPanel>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" Margin="10" Width="400"  VerticalAlignment="Center">
-                            <Label Content="Склад:" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="0 0 0 0"></Label>
-                            <Label Content="{Binding Storage.Address}" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="0 0 0 0"></Label>
-                        </StackPanel>
-                        <StackPanel Orientation="Vertical" Margin="10" Width="250" VerticalAlignment="Center">
-                            <Button Tag="{Binding idProductAddRequest}" Content="Принять" Background="#FEF9EF" Foreground="Black" Height="50" Margin="0 0 0 10" Width="200" FontSize="30" Click="AcceptSupplyButton"></Button>
-                            <Button Tag="{Binding idProductAddRequest}" Content="Отклонить" Background="#FEF9EF" Foreground="Black" Height="50" Width="200" FontSize="30" Click="RejectBtnClick"></Button>
-                        </StackPanel>
-                    </StackPanel>
                         <Separator Margin="0 15 0 15" HorizontalAlignment="Center" Width="800"></Separator>
                     </StackPanel>
                 </DataTemplate>

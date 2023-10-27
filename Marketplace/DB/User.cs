@@ -21,7 +21,7 @@ namespace Marketplace.DB
             this.Like = new HashSet<Like>();
             this.Product = new HashSet<Product>();
             this.ProductAddRequest = new HashSet<ProductAddRequest>();
-            this.Sell_User = new HashSet<Sell_User>();
+            this.Sell = new HashSet<Sell>();
             this.Supply = new HashSet<Supply>();
         }
     
@@ -44,7 +44,7 @@ namespace Marketplace.DB
         public virtual ICollection<ProductAddRequest> ProductAddRequest { get; set; }
         public virtual Role Role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sell_User> Sell_User { get; set; }
+        public virtual ICollection<Sell> Sell { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Supply> Supply { get; set; }
     }

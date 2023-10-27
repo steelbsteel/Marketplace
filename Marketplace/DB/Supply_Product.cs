@@ -18,7 +18,6 @@ namespace Marketplace.DB
         public int idSupply { get; set; }
         public int idProduct { get; set; }
     
-        public virtual Product Product { get; set; }
         public virtual Supply Supply { get; set; }
     }
 }

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\202001\Source\Repos\Marketplace\Marketplace\obj\Debug\
+C:\Users\user\source\repos\Marketplace1\Marketplace\obj\Debug\
 Marketplace
 none
 false
 DEBUG;TRACE
-C:\Users\202001\Source\Repos\Marketplace\Marketplace\App.xaml
-15-15962712
+C:\Users\user\source\repos\Marketplace1\Marketplace\App.xaml
+202043055579
 2-973498431
-45-2086994377
-18-1524034167
-Pages\General pages\MainWindow.xaml;Pages\General pages\AddProductToBasketWindow.xaml;Pages\General pages\AuthorizationPage.xaml;Pages\General pages\BasketPage.xaml;Pages\General pages\LikesPage.xaml;Pages\General pages\MarketplacePage.xaml;Pages\Customer pages\ProfilePage.xaml;Pages\General pages\RegistrationPage.xaml;Pages\General pages\ReplinishBalanceWindow.xaml;Pages\Seller pages\CreateNewProductPage.xaml;Pages\Seller pages\MakeSupplyPage.xaml;Pages\Seller pages\RequestsSellerPage.xaml;Pages\Seller pages\SellerPage.xaml;Pages\Seller pages\SellsPage.xaml;Pages\Seller pages\SuppliesListPage.xaml;
+48-1794168214
+201781834052
+Pages\Admin pages\AdminMainPage.xaml;Pages\Admin pages\AdminRequestsWindow.xaml;Pages\Admin pages\AdminSuppliesPage.xaml;Pages\Customer pages\PurchasesList.xaml;Pages\General pages\MainWindow.xaml;Pages\General pages\AddProductToBasketWindow.xaml;Pages\General pages\AuthorizationPage.xaml;Pages\General pages\BasketPage.xaml;Pages\General pages\LikesPage.xaml;Pages\General pages\MarketplacePage.xaml;Pages\Customer pages\ProfilePage.xaml;Pages\General pages\QRWindow.xaml;Pages\General pages\RegistrationPage.xaml;Pages\General pages\ReplinishBalanceWindow.xaml;Pages\Seller pages\CreateNewProductPage.xaml;Pages\Seller pages\MakeSupplyPage.xaml;Pages\Seller pages\RequestsSellerPage.xaml;Pages\Seller pages\SellerPage.xaml;Pages\Seller pages\SellsPage.xaml;Pages\Seller pages\SuppliesListPage.xaml;
 
 False
 

@@ -29,34 +29,35 @@
         <Label Grid.Row="1" VerticalAlignment="Center" x:Name="NoProductsInLikesLabel" Content="Вы пока не добавили товары в понравившиеся" HorizontalAlignment="Center" FontWeight="Black" Margin="15"></Label>
         <StackPanel Grid.Row="1">
             <Label Content="Понравившиеся" HorizontalAlignment="Center" FontWeight="Black" Margin="15"></Label>
-            <ListView Grid.Row="3" HorizontalAlignment="Center" x:Name="ProductList" BorderBrush="#FEF9EF" Background="#FEF9EF" d:ItemsSource="{d:SampleData ItemCount=30}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal" Margin="30 0 30 30" Background="#353831">
-                            <StackPanel.Effect>
-                                <DropShadowEffect Opacity="10" RenderingBias="Performance" Direction="270" ShadowDepth="3" BlurRadius="30" />
-                            </StackPanel.Effect>
-                            <StackPanel Orientation="Horizontal" Margin="10">
-                                <Border BorderBrush="Black" BorderThickness="3">
-                                    <Image Source="{Binding Image}" Height="300" Width="300"/>
-                                </Border>
-                                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="30 0 0 0">
-                                    <StackPanel Orientation="Horizontal">
-                                        <Label Foreground="#FEF9EF" Content="Название товара: "></Label>
-                                        <Label Foreground="#FEF9EF" Content="{Binding Title}"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Label Foreground="#FEF9EF" Content="Цена товара за еденицу: "></Label>
-                                        <Label Foreground="#FEF9EF" Content="{Binding Cost}"/>
-                                    </StackPanel>
-                                    <Button Click="AddProductToBasketBtnClick" x:Name="AddProductToBasketBtn" VerticalAlignment="Bottom" Background="#FEF9EF" Foreground="Black" Width="300" Margin="0 100 0 0" FontSize="30" Content="Добавить в корзину"></Button>
-                                </StackPanel>
-                            </StackPanel>
-                            <Separator Height="5" Opacity="0"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
         </StackPanel>
+        <ListView Grid.Row="3" Margin="0 100 0 0" HorizontalAlignment="Center" x:Name="ProductList" BorderBrush="#FEF9EF"  Background="#FEF9EF" d:ItemsSource="{d:SampleData ItemCount=30}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Margin="30 0 30 30" Background="#353831">
+                        <StackPanel.Effect>
+                            <DropShadowEffect Opacity="10" RenderingBias="Performance" Direction="270" ShadowDepth="3" BlurRadius="30" />
+                        </StackPanel.Effect>
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <Border BorderBrush="Black" BorderThickness="3">
+                                <Image Source="{Binding Product.Image}" Height="300" Width="300"/>
+                            </Border>
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="30 0 0 0">
+                                <Button Click="DeleteProductFromBasketBtnClick" Tag="{Binding idLike}" Content="X" Foreground="Red" VerticalAlignment="Top" HorizontalAlignment="Right"></Button>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Foreground="#FEF9EF" Content="Название товара: "></Label>
+                                    <Label Foreground="#FEF9EF" Content="{Binding Product.Title}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Foreground="#FEF9EF" Content="Цена товара за еденицу: "></Label>
+                                    <Label Foreground="#FEF9EF" Content="{Binding Product.Cost}"/>
+                                </StackPanel>
+                                <Button Click="AddProductToBasketBtnClick" x:Name="AddProductToBasketBtn" VerticalAlignment="Bottom" Background="#FEF9EF" Foreground="Black" Width="300" Margin="0 100 0 0" FontSize="30" Content="Добавить в корзину"></Button>
+                            </StackPanel>
+                        </StackPanel>
+                        <Separator Height="5" Opacity="0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

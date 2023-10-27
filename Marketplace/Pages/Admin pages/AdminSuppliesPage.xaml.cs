@@ -1,6 +1,7 @@
 ﻿using Marketplace.DB;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,15 +27,8 @@ namespace Marketplace.Pages.Admin_pages
         {
             this.userInfo = user;
             InitializeComponent();
-            List<Supply> supplies = App.Connection.Supply.ToList().Where(x => x.Date == DateTime.Today).ToList();
-            List<Supply_Product> list = new List<Supply_Product>();
-            foreach (Supply supply in supplies)
-            {
-                List<Supply_Product> products = App.Connection.Supply_Product.ToList().Where(x => x.idSupply == supply.idSupply).ToList();
-            }
-            
-
-            list = App.Connection.Supply_Product.Distinct().ToList();
+            List<Supply> list = App.Connection.Supply.Where(x => x.Date.Day == DateTime.Today.Day && x.Accepted == null).ToList();
+            SuppliesLV.ItemsSource = list;
 
             if (list.Count > 0)
             {
@@ -55,7 +49,30 @@ namespace Marketplace.Pages.Admin_pages
 
         private void AcceptSupplyButton(object sender, RoutedEventArgs e)
         {
+            var id = (int)((Button)sender).Tag;
+            Supply supply = App.Connection.Supply.First(x => x.idSupply == id);
+            Product_Storage productStorage = new Product_Storage();
+            productStorage.idProduct = supply.idProduct;
+            productStorage.idStorage = supply.idStorage;
+            productStorage.CountOfProducts = supply.CountOfProducts;
+            App.Connection.Product_Storage.Add(productStorage);
+            App.Connection.SaveChanges();
+            supply.Accepted = true;
+            App.Connection.Supply.AddOrUpdate(supply);
+            App.Connection.SaveChanges();
+            MessageBox.Show("Вы успешно приняли поставку", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+            NavigationService.Navigate(new AdminSuppliesPage(userInfo));
+        }
 
+        private void RejectBtnClick(object sender, RoutedEventArgs e)
+        {
+            var id = (int)((Button)sender).Tag;
+            Supply supply = App.Connection.Supply.First(x => x.idSupply == id);
+            supply.Accepted = false;
+            App.Connection.Supply.AddOrUpdate(supply);
+            App.Connection.SaveChanges();
+            MessageBox.Show("Вы успешно отклонили поставку", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+            NavigationService.Navigate(new AdminSuppliesPage(userInfo));
         }
     }
 }

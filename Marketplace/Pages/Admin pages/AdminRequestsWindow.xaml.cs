@@ -33,7 +33,7 @@ namespace Marketplace.Pages.Admin_pages
         private void ButtonAcceptClick(object sender, RoutedEventArgs e)
         {
             var id = (int)((Button)sender).Tag;
-            ProductAddRequest productReq = App.Connection.ProductAddRequest.First(x => x.idProduct == id);
+            ProductAddRequest productReq = App.Connection.ProductAddRequest.First(x => x.idProductAddRequest == id);
             Product product = App.Connection.Product.First(x => x.idProduct == productReq.idProduct);
             product.onSell = true;
             productReq.idProductAddRequestStatus = 2;
@@ -48,7 +48,7 @@ namespace Marketplace.Pages.Admin_pages
         private void RejectBtnClick(object sender, RoutedEventArgs e)
         {
             var id = (int)((Button)sender).Tag;
-            ProductAddRequest product = App.Connection.ProductAddRequest.First(x => x.idProduct == id);
+            ProductAddRequest product = App.Connection.ProductAddRequest.First(x => x.idProductAddRequest == id);
             product.idProductAddRequestStatus = 3;
             App.Connection.ProductAddRequest.AddOrUpdate(product);
             App.Connection.SaveChanges();

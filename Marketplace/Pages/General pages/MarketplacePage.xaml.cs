@@ -1,6 +1,9 @@
 ﻿using Marketplace.DB;
+using Marketplace.Pages.General_pages;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xaml;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Marketplace.Pages
 {
@@ -22,13 +27,28 @@ namespace Marketplace.Pages
     public partial class MarketplacePage : Page
     {
         User userInfo;
+        List<Product> products;
+        List<Product> productsModified;
         public MarketplacePage(User user)
         {
             InitializeComponent();
-            ProductList.ItemsSource = DBMethods.GetProductsReadyToSell();
+            products = DBMethods.GetProductsReadyToSell();
+            productsModified = DBMethods.GetProductsReadyToSell();
+            if (products.Count > 0)
+            {
+                ProductList.ItemsSource = products;
+                ProductList.Visibility = Visibility.Visible;
+                NoProductsLabel.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                ProductList.Visibility = Visibility.Hidden;
+                NoProductsLabel.Visibility = Visibility.Visible;
+            }
             userInfo = user;
             NameLabel.Content = user.Name;
             SurnameLabel.Content = user.Surname;
+            FilterCB.ItemsSource = App.Connection.ProductCategory.ToList();
         }
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
@@ -40,7 +60,7 @@ namespace Marketplace.Pages
             }
         }
 
-        private void LikeBtn_Click(object sender, RoutedEventArgs e)
+        private void LikeBtnClick(object sender, RoutedEventArgs e)
         {
             var id = (int)((Button)sender).Tag;
             Product product = App.Connection.Product.First(x => x.idProduct == id);
@@ -64,7 +84,8 @@ namespace Marketplace.Pages
             else
             {
                 MessageBox.Show($"Вы должны достигнуть возраста {rate} лет, чтобы вы смогли добавить в понравившиеся этот товар", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }     
+            }
+            MessageBox.Show("Вы успешно добавили товар в понравившиеся", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void NameMouseDown(object sender, MouseButtonEventArgs e)
@@ -106,6 +127,57 @@ namespace Marketplace.Pages
         private void GoToBasketBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new BasketPage(userInfo));
+        }
+
+        private void FilterCBSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (FilterCB.Text != null)
+            {
+                try
+                {
+                    var id = (FilterCB.SelectedItem as ProductCategory).idProductCategory;
+                    ProductList.ItemsSource = DBMethods.GetProductsReadyToSell(id);
+                    //ProductList.ItemsSource = App.Connection.Product.Where(x => x.idProductCategory == id).ToList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Товары по данной категории пока отсутствуют {ex}", "Неудачно", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+
+            }
+        }
+
+        private void TextBoxTextChanged(object sender, TextChangedEventArgs e)
+        {
+            productsModified = products.Where(x => x.Title.ToLower().Contains(SearchTB.Text.ToLower())).ToList();
+            ProductList.ItemsSource = productsModified;
+        }
+
+        private void CreateQRClick(object sender, RoutedEventArgs e)
+        {
+            QRCoder.QRCodeGenerator qr = new QRCoder.QRCodeGenerator();
+            // Присваеваем значиения
+            QRCoder.QRCodeData data = qr.CreateQrCode("https://mck-ktits.ru/?ysclid=lo8v2lyc3h750889798", QRCoder.QRCodeGenerator.ECCLevel.L);
+            // переводим в Qr
+            QRCoder.QRCode code = new QRCoder.QRCode(data);
+            Bitmap bitmap = code.GetGraphic(100);
+            /// Создание картинки
+            using (MemoryStream memory = new MemoryStream())
+            {
+                bitmap.Save(memory, System.Drawing.Imaging.ImageFormat.Bmp);
+                memory.Position = 0;
+                BitmapImage bitmapimage = new BitmapImage();
+                bitmapimage.BeginInit();
+                bitmapimage.StreamSource = memory;
+                bitmapimage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapimage.EndInit();
+                var replinishBalanceWindow = new QRWindow(bitmapimage);
+                bool? result = replinishBalanceWindow.ShowDialog();
+                if (result == false || result == true)
+                {
+                    NavigationService.Navigate(new MarketplacePage(userInfo));
+                }
+            }
         }
     }
 }

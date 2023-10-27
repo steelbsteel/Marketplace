@@ -45,7 +45,7 @@ namespace Marketplace.Pages
             bool? result = replinishBalanceWindow.ShowDialog();
             if (result == false || result == true)
             {
-                NavigationService.Navigate(new SellerPage(userInfo));
+                NavigationService.Navigate(new MarketplacePage(userInfo));
             }
 
         }

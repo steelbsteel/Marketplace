@@ -26,8 +26,7 @@ namespace Marketplace.Pages.Seller_pages
         {
             userInfo = user;
             InitializeComponent();
-            ProductCB.ItemsSource = App.Connection.Product.ToList();
-            //ProductCB.ItemsSource = DBMethods.GetProductsReadyToSupply(userInfo.idUser);
+            ProductCB.ItemsSource = DBMethods.GetProductsReadyToSupply(userInfo.idUser);
             StoragesCB.ItemsSource = App.Connection.Storage.ToList();
         }
         private void NameMouseDown(object sender, MouseButtonEventArgs e)
@@ -78,7 +77,7 @@ namespace Marketplace.Pages.Seller_pages
                 return;
             }
 
-            if (datePicker.SelectedDate < DateTime.Now)
+            if (datePicker.SelectedDate < DateTime.Today)
             {
                 MessageBox.Show($"Ошибка выбора даты поставки. Выберите поставку не ранее чем {correctDate.Date} ", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -106,23 +105,15 @@ namespace Marketplace.Pages.Seller_pages
             try
             {
                 Supply supply = new Supply();
-                supply.Accepted = false;
                 supply.Date = (DateTime)datePicker.SelectedDate;
                 supply.idUser = userInfo.idUser;
                 supply.idStorage = (StoragesCB.SelectedItem as Storage).idStorage;
-
+                supply.Accepted = null;
+                supply.CountOfProducts = Convert.ToInt32(CountTB.Text);
                 Product product = ProductCB.SelectedItem as Product;
+                supply.idProduct = product.idProduct;
                 App.Connection.Supply.Add(supply);
-                App.Connection.SaveChanges();
-                
-                for (int i = 0; i < Convert.ToInt32(CountTB.Text); i++)
-                {
-                    Supply_Product supply_Product = new Supply_Product();
-                    supply_Product.idProduct = product.idProduct;
-                    supply_Product.idSupply = supply.idSupply;
-                    App.Connection.Supply_Product.Add(supply_Product);
-                    App.Connection.SaveChanges();
-                }
+                App.Connection.SaveChanges();              
                 MessageBox.Show("Вы успешно запланировали поставку", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
             }
 

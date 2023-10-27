@@ -1,4 +1,5 @@
 ﻿using Marketplace.DB;
+using Marketplace.Pages.Customer_pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,7 +45,7 @@ namespace Marketplace.Pages
             bool? result = replinishBalanceWindow.ShowDialog();
             if (result == false || result == true)
             {
-                NavigationService.Navigate(new ProfilePage(userInfo));
+                NavigationService.Navigate(new MarketplacePage(userInfo));
             }
             
         }
@@ -62,6 +63,11 @@ namespace Marketplace.Pages
         private void MarketplaceBtnClick_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new MarketplacePage(userInfo));
+        }
+
+        private void PurchasesBtnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new PurchasesList(userInfo));
         }
     }
 }

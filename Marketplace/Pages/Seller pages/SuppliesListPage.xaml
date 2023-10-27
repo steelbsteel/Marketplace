@@ -32,25 +32,39 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" Margin="10">
-                        <StackPanel Orientation="Vertical" Margin="10" Width="250">
-                            <Label Content="Дата:" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="50 0 0 0"></Label>
-                            <Label Content="{Binding Date}" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="50 0 0 0"></Label>
-                        </StackPanel>
-                        <StackPanel Orientation="Vertical" Margin="10" Width="400">
+                        <Image Source="{Binding Product.Image}" Height="150" Width="150"></Image>
+                        <StackPanel VerticalAlignment="Center" Orientation="Vertical" Margin="10" Width="500">
+                            <Label Content="Название:" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="10 0 0 0"></Label>
+                            <Label Content="{Binding Product.Title}" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="10 0 0 0"></Label>
+                            <Separator/>
                             <Label Content="Склад:" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="0 0 0 0"></Label>
                             <Label Content="{Binding Storage.Address}" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="0 0 0 0"></Label>
+
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" Margin="10" Width="250">
+                        <StackPanel VerticalAlignment="Center" Orientation="Vertical" Margin="10" Width="200">
+                            <Label Content="Количество:" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="10 0 0 0"></Label>
+                            <Label Content="{Binding CountOfProducts}" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="10 0 0 0"></Label>
+                            <Separator/>
+                            <Label Content="Дата:" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="10 0 0 0"></Label>
+                            <Label Content="{Binding Date}" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="10 0 0 0"></Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10" Width="500">
                             <Label Content="Состояние:" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#FEF9EF" Margin="0 0 0 0"></Label>
-                            <Label VerticalAlignment="Center" FontSize="30" FontWeight="Light"  HorizontalAlignment="Center" Margin="0 0 0 0">
+                            <Label VerticalAlignment="Center" FontSize="35" FontWeight="Light"  HorizontalAlignment="Center" Margin="0 0 0 0">
                                 <Label.Style>
                                     <Style TargetType="Label">
-                                        <Setter Property="Content" Value="Принята" />
-                                        <Setter Property="Foreground" Value="Green"/>
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding Accepted}" Value="False">
                                                 <Setter Property="Content" Value="Не принята" />
                                                 <Setter Property="Foreground" Value="Red"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Accepted}" Value="{x:Null}">
+                                                <Setter Property="Content" Value="В доставке" />
+                                                <Setter Property="Foreground" Value="Yellow"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Accepted}" Value="True">
+                                                <Setter Property="Content" Value="Принята" />
+                                                <Setter Property="Foreground" Value="Green"/>
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
